@@ -7,8 +7,8 @@ import '/flavors/environment.dart';
 
 void main() {
   EnvConfig devConfig = EnvConfig(
-    appName: "Flutter GetX Template Dev",
-    baseUrl: "https://api.github.com",
+    appName: "BS-Commerce Flutter Dev",
+    baseUrl: "https://bs-commerce-headless-demo.herokuapp.com/",
     shouldCollectCrashLog: true,
   );
 

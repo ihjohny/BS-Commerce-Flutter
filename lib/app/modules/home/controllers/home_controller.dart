@@ -1,9 +1,9 @@
 import 'package:get/get.dart';
 
+import '../../../data/product/model/data_model.dart';
+import '../../../data/product/repository/catalogue_repository.dart';
 import '/app/core/base/base_controller.dart';
-import '/app/data/repository/catalogue_repository.dart';
 import '/app/modules/home/model/ui_data.dart';
-import '../../../data/model/data_model.dart';
 
 class HomeController extends BaseController {
   final CatalogueRepository _repository =
