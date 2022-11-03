@@ -7,7 +7,7 @@ import '/flavors/environment.dart';
 
 void main() {
   EnvConfig devConfig = EnvConfig(
-    appName: "BS-Commerce Flutter Dev",
+    appName: "BS-Commerce Dev",
     baseUrl: "https://bs-commerce-headless-demo.herokuapp.com/",
     shouldCollectCrashLog: true,
   );

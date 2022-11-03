@@ -1,3 +1,5 @@
+import 'package:bs_commerce/app/data/product/model/product_catelog_response.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../data/product/model/data_model.dart';
@@ -13,11 +15,14 @@ class HomeController extends BaseController {
 
   UiData? get data => _data.value;
 
-  getDetails() {
-    callDataService(_repository.getDetails(), onSuccess: _handleDataResponse);
+  getDetails() async{
+   var x= await callDataService(_repository.getDetails(), onSuccess: _handleDataResponse) as ProductCatalogResponse;
+   x.data?.forEach((element) {
+     print(element.info?.name);
+   });
   }
 
-  _handleDataResponse(Data data) {
-    _data(UiData(data.value));
+  _handleDataResponse(ProductCatalogResponse data) {
+    _data(UiData(data));
   }
 }

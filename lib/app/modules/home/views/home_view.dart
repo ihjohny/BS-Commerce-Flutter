@@ -25,7 +25,12 @@ class HomeView extends BaseView<HomeController> {
   }
 
   Widget _getView() {
-    return Text(
-        controller.data?.value != null ? controller.data!.value : "Loading");
+    return ListView.separated(itemBuilder: (context,index){
+      return Text(controller.data?.value?.data![index].info?.name??"");
+
+    }, separatorBuilder: (context,index){
+      return Divider();
+
+    }, itemCount: controller.data?.value?.data?.length??0);
   }
 }
