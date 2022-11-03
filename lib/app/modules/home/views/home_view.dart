@@ -1,3 +1,4 @@
+import 'package:bs_commerce/app/modules/home/components/item_card.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
@@ -25,12 +26,10 @@ class HomeView extends BaseView<HomeController> {
   }
 
   Widget _getView() {
-    return ListView.separated(itemBuilder: (context,index){
-      return Text(controller.data?.value?.data![index].info?.name??"");
-
-    }, separatorBuilder: (context,index){
-      return Divider();
-
-    }, itemCount: controller.data?.value?.data?.length??0);
+    return GridView.count(
+      crossAxisCount: 2,
+      children: List.generate(controller.data?.value?.data?.length ?? 0,
+          (index) => ProductCard(controller.data?.value?.data?[index])),
+    );
   }
 }

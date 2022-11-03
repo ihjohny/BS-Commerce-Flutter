@@ -7,7 +7,7 @@ class ProductCatalogResponse {
   ProductCatalogResponse.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     if (json['data'] != null) {
-      data =  <Data>[];
+      data = <Data>[];
       json['data'].forEach((v) {
         data?.add(Data.fromJson(v));
       });
@@ -15,7 +15,7 @@ class ProductCatalogResponse {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  <String, dynamic>{};
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['code'] = code;
     data['data'] = this.data?.map((v) => v.toJson()).toList();
 
@@ -37,35 +37,35 @@ class Data {
 
   Data(
       {id,
-        info,
-        meta,
-        tags,
-        photos,
-        brands,
-        manufacturer,
-        categories,
-        createdAt,
-        updatedAt});
+      info,
+      meta,
+      tags,
+      photos,
+      brands,
+      manufacturer,
+      categories,
+      createdAt,
+      updatedAt});
 
   Data.fromJson(Map<String, dynamic> json) {
     id = json['id'];
-    info = json['info'] != null ?  Info.fromJson(json['info']) : null;
-    meta = json['meta'] != null ?  Meta.fromJson(json['meta']) : null;
+    info = json['info'] != null ? Info.fromJson(json['info']) : null;
+    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
     tags = json['tags'].cast<String>();
     if (json['photos'] != null) {
       photos = <Photos>[];
       json['photos'].forEach((v) {
-        photos?.add( Photos.fromJson(v));
+        photos?.add(Photos.fromJson(v));
       });
     }
     brands = json['brands'].cast<String>();
     manufacturer = json['manufacturer'] != null
-        ?  Manufacturer.fromJson(json['manufacturer'])
+        ? Manufacturer.fromJson(json['manufacturer'])
         : null;
     if (json['categories'] != null) {
-      categories =  <Categories>[];
+      categories = <Categories>[];
       json['categories'].forEach((v) {
-        categories?.add( Categories.fromJson(v));
+        categories?.add(Categories.fromJson(v));
       });
     }
     createdAt = json['createdAt'];
@@ -73,7 +73,7 @@ class Data {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['id'] = id;
     if (info != null) {
       data['info'] = info?.toJson();
@@ -111,7 +111,7 @@ class Categories {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['id'] = id;
     data['name'] = name;
 
@@ -137,19 +137,19 @@ class Info {
 
   Info(
       {name,
-        shortDescription,
-        fullDescription,
-        sku,
-        price,
-        oldPrice,
-        cost,
-        showOnHomePage,
-        includeInTopMenu,
-        allowToSelectPageSize,
-        published,
-        displayOrder,
-        isFeatured,
-        publishDate});
+      shortDescription,
+      fullDescription,
+      sku,
+      price,
+      oldPrice,
+      cost,
+      showOnHomePage,
+      includeInTopMenu,
+      allowToSelectPageSize,
+      published,
+      displayOrder,
+      isFeatured,
+      publishDate});
 
   Info.fromJson(Map<String, dynamic> json) {
     name = json['name'];
@@ -169,7 +169,7 @@ class Info {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['name'] = name;
     data['shortDescription'] = shortDescription;
     data['fullDescription'] = fullDescription;
@@ -205,7 +205,7 @@ class Meta {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['keywords'] = keywords;
     data['title'] = title;
     data['description'] = description;
@@ -224,14 +224,7 @@ class Photos {
   String? diplayOrder;
   String? displaOrder;
 
-  Photos(
-      {url,
-        id,
-        title,
-        alt,
-        displayOrder,
-        diplayOrder,
-        displaOrder});
+  Photos({url, id, title, alt, displayOrder, diplayOrder, displaOrder});
 
   Photos.fromJson(Map<String, dynamic> json) {
     url = json['url'];
@@ -244,7 +237,7 @@ class Photos {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['url'] = url;
     data['id'] = id;
     data['title'] = title;
@@ -269,7 +262,7 @@ class Manufacturer {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data =  Map<String, dynamic>();
+    final Map<String, dynamic> data = Map<String, dynamic>();
     data['id'] = id;
     data['name'] = name;
 

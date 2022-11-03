@@ -15,12 +15,13 @@ class CatalogueRemoteDataSourceImpl extends BaseRemoteSource
     var dioCall = dioClient.get(endpoint);
 
     try {
-       return callApiWithErrorParser(dioCall)
-          .then((response)=>_parseProductCatalogResponse(response));
+      return callApiWithErrorParser(dioCall)
+          .then((response) => _parseProductCatalogResponse(response));
     } catch (e) {
       rethrow;
     }
   }
+
   ProductCatalogResponse _parseProductCatalogResponse(
       Response<dynamic> response) {
     return ProductCatalogResponse.fromJson(response.data);
