@@ -1,3 +1,5 @@
+import 'package:bs_commerce/app/modules/product_details/bindings/product_details_binding.dart';
+import 'package:bs_commerce/app/modules/product_details/controllers/product_details_controller.dart';
 import 'package:get/get.dart';
 
 import 'local_source_bindings.dart';
@@ -10,5 +12,6 @@ class InitialBinding implements Bindings {
     RepositoryBindings().dependencies();
     RemoteSourceBindings().dependencies();
     LocalSourceBindings().dependencies();
+    ProductDetailsBinding().dependencies();
   }
 }

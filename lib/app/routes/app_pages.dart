@@ -1,3 +1,5 @@
+import 'package:bs_commerce/app/modules/product_details/bindings/product_details_binding.dart';
+import 'package:bs_commerce/app/modules/product_details/views/product_details_view.dart';
 import 'package:get/get.dart';
 
 import '/app/modules/home/bindings/home_binding.dart';
@@ -15,6 +17,11 @@ class AppPages {
       name: _Paths.HOME,
       page: () => HomeView(),
       binding: HomeBinding(),
+    ),
+    GetPage(
+      name: _Paths.PRODUCT_DETAILS,
+      page: () => ProductDetailsView(),
+      binding: ProductDetailsBinding(),
     ),
   ];
 }

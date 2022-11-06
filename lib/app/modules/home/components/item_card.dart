@@ -1,6 +1,6 @@
-import 'package:bs_commerce/app/data/product/model/product_catelog_response.dart';
 import 'package:flutter/material.dart';
 
+import '../../../data/product/model/product_home/model_product_home.dart';
 import '../../../theme/dimen.dart';
 
 class ProductCard extends StatelessWidget {

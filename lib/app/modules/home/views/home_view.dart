@@ -1,5 +1,7 @@
 import 'package:bs_commerce/app/modules/home/components/item_card.dart';
+import 'package:bs_commerce/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:get/get_state_manager/src/rx_flutter/rx_obx_widget.dart';
 
 import '/app/core/base/base_view.dart';
@@ -8,7 +10,7 @@ import '/app/modules/home/controllers/home_controller.dart';
 
 class HomeView extends BaseView<HomeController> {
   HomeView() {
-    controller.getDetails();
+    controller.getHomePageProducts();
   }
 
   @override
@@ -29,7 +31,10 @@ class HomeView extends BaseView<HomeController> {
     return GridView.count(
       crossAxisCount: 2,
       children: List.generate(controller.data?.value?.productHome?.length ?? 0,
-          (index) => ProductCard(controller.data?.value?.productHome?[index])),
+          (index) => GestureDetector(
+              onTap: (){
+                Get.toNamed(Routes.PRODUCT_DETAILS,arguments:controller.data?.value?.productHome?[index].id );
+              },child: ProductCard(controller.data?.value?.productHome?[index]))),
     );
   }
 }
