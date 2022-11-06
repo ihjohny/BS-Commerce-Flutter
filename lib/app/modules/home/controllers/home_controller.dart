@@ -14,8 +14,7 @@ class HomeController extends BaseController {
   UiData? get data => _data.value;
 
   getDetails() {
-    callDataService(_repository.getDetails(), onSuccess: _handleDataResponse)
-        as ProductCatalogResponse;
+    callDataService(_repository.getDetails(), onSuccess: _handleDataResponse);
   }
 
   _handleDataResponse(ProductCatalogResponse data) {

@@ -1,15 +1,15 @@
 class ProductCatalogResponse {
   dynamic code;
-  List<Data>? data;
+  List<ProductHome>? productHome;
 
   ProductCatalogResponse({code, data});
 
   ProductCatalogResponse.fromJson(Map<String, dynamic> json) {
     code = json['code'];
     if (json['data'] != null) {
-      data = <Data>[];
+      productHome = <ProductHome>[];
       json['data'].forEach((v) {
-        data?.add(Data.fromJson(v));
+        productHome?.add(ProductHome.fromJson(v));
       });
     }
   }
@@ -17,37 +17,32 @@ class ProductCatalogResponse {
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
     data['code'] = code;
-    data['data'] = this.data?.map((v) => v.toJson()).toList();
+    data['data'] = this.productHome?.map((v) => v.toJson()).toList();
 
     return data;
   }
 }
 
-class Data {
+class ProductHome {
   String? id;
   Info? info;
   Meta? meta;
   List<String>? tags;
   List<Photos>? photos;
   List<String>? brands;
-  Manufacturer? manufacturer;
   List<Categories>? categories;
-  String? createdAt;
-  String? updatedAt;
 
-  Data(
+  ProductHome(
       {id,
       info,
       meta,
       tags,
       photos,
       brands,
-      manufacturer,
       categories,
-      createdAt,
-      updatedAt});
+      });
 
-  Data.fromJson(Map<String, dynamic> json) {
+  ProductHome.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     info = json['info'] != null ? Info.fromJson(json['info']) : null;
     meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
@@ -59,17 +54,12 @@ class Data {
       });
     }
     brands = json['brands'].cast<String>();
-    manufacturer = json['manufacturer'] != null
-        ? Manufacturer.fromJson(json['manufacturer'])
-        : null;
     if (json['categories'] != null) {
       categories = <Categories>[];
       json['categories'].forEach((v) {
         categories?.add(Categories.fromJson(v));
       });
     }
-    createdAt = json['createdAt'];
-    updatedAt = json['updatedAt'];
   }
 
   Map<String, dynamic> toJson() {
@@ -86,14 +76,9 @@ class Data {
       data['photos'] = photos?.map((v) => v.toJson()).toList();
     }
     data['brands'] = brands;
-    if (manufacturer != null) {
-      data['manufacturer'] = manufacturer?.toJson();
-    }
     if (categories != null) {
-      data['categories'] = categories?.map((v) => v?.toJson()).toList();
+      data['categories'] = categories?.map((v) => v.toJson()).toList();
     }
-    data['createdAt'] = createdAt;
-    data['updatedAt'] = updatedAt;
 
     return data;
   }
@@ -193,15 +178,13 @@ class Meta {
   List<String>? keywords;
   String? title;
   String? description;
-  String? friendlyPageName;
 
-  Meta({keywords, title, description, friendlyPageName});
+  Meta({keywords, title, description});
 
   Meta.fromJson(Map<String, dynamic> json) {
     keywords = json['keywords'].cast<String>();
     title = json['title'];
     description = json['description'];
-    friendlyPageName = json['friendlyPageName'];
   }
 
   Map<String, dynamic> toJson() {
@@ -209,7 +192,6 @@ class Meta {
     data['keywords'] = keywords;
     data['title'] = title;
     data['description'] = description;
-    data['friendlyPageName'] = friendlyPageName;
 
     return data;
   }
@@ -220,20 +202,14 @@ class Photos {
   String? id;
   String? title;
   String? alt;
-  dynamic displayOrder;
-  String? diplayOrder;
-  String? displaOrder;
 
-  Photos({url, id, title, alt, displayOrder, diplayOrder, displaOrder});
+  Photos({url, id, title, alt});
 
   Photos.fromJson(Map<String, dynamic> json) {
     url = json['url'];
     id = json['id'];
     title = json['title'];
     alt = json['alt'];
-    displayOrder = json['displayOrder'];
-    diplayOrder = json['diplayOrder'];
-    displaOrder = json['displaOrder'];
   }
 
   Map<String, dynamic> toJson() {
@@ -242,9 +218,6 @@ class Photos {
     data['id'] = id;
     data['title'] = title;
     data['alt'] = alt;
-    data['displayOrder'] = displayOrder;
-    data['diplayOrder'] = diplayOrder;
-    data['displaOrder'] = displaOrder;
 
     return data;
   }

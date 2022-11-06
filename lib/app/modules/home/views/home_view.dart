@@ -28,8 +28,8 @@ class HomeView extends BaseView<HomeController> {
   Widget _getView() {
     return GridView.count(
       crossAxisCount: 2,
-      children: List.generate(controller.data?.value?.data?.length ?? 0,
-          (index) => ProductCard(controller.data?.value?.data?[index])),
+      children: List.generate(controller.data?.value?.productHome?.length ?? 0,
+          (index) => ProductCard(controller.data?.value?.productHome?[index])),
     );
   }
 }
