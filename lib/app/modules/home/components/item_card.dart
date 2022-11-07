@@ -14,23 +14,23 @@ class ProductCard extends StatelessWidget {
       title: Container(
           decoration: BoxDecoration(
               color: Colors.white70,
-              borderRadius: BorderRadius.circular(product_card_radius)),
+              borderRadius: BorderRadius.circular(PRODUCT_CARD_RADIUS)),
           child: Stack(
             children: [
               Image.network(
                 data?.photos?.first.url ?? "",
-                height: product_card_width,
+                height: PRODUCT_CARD_WIDTH,
               ),
               Positioned(
                   top: 5,
-                  left: card_left_position_padding,
+                  left: CARD_LEFT_POSITION_PADDING,
                   right: 5,
                   child: Container(
-                      height: favorite_icon_btn_height,
+                      height: FAVORITE_ICON_BTN_HEIGHT,
                       decoration: BoxDecoration(
                           color: Theme.of(context).scaffoldBackgroundColor,
                           shape: BoxShape.circle),
-                      width: favorite_icon_btn_width,
+                      width: FAVORITE_ICON_BTN_WIDTH,
                       child: IconButton(
                           color: Theme.of(context).scaffoldBackgroundColor,
                           onPressed: null,
