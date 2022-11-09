@@ -1,6 +1,6 @@
 import 'package:get/get.dart';
 
-import '../../model/product_home/product_home_response.dart';
+import '../../model/product_home/response.dart';
 import '../../remote/home/home_remote_data_source.dart';
 import 'home_repository.dart';
 

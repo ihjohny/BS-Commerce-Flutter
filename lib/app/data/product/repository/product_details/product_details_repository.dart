@@ -1,4 +1,5 @@
-import 'package:bs_commerce/app/data/product/model/product_details/ProductDetailsResponse.dart';
+
+import '../../model/product_details/response.dart';
 
 abstract class ProductDetailsRepository {
   Future<ProductDetailsResponse> getProductDetails(String productId);

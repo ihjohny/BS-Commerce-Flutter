@@ -1,4 +1,4 @@
-import '../product_home/model_product_home.dart';
+import '../product_home/home.dart';
 
 class ProductDetailsResponse {
   int? code;

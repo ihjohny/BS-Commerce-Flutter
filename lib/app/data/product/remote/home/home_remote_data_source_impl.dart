@@ -1,6 +1,6 @@
 import 'package:dio/dio.dart';
 import '../../../../network/dio_provider.dart';
-import '../../model/product_home/product_home_response.dart';
+import '../../model/product_home/response.dart';
 import '/app/core/base/base_remote_source.dart';
 import 'home_remote_data_source.dart';
 

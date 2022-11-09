@@ -1,4 +1,4 @@
-import '../../model/product_home/product_home_response.dart';
+import '../../model/product_home/response.dart';
 
 abstract class HomeRemoteDataSource {
   Future<ProductHomeResponse> getHomePageProducts();

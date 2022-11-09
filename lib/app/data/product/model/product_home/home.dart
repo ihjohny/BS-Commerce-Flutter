@@ -1,7 +1,8 @@
-import 'model_product_categories.dart';
-import 'model_product_info.dart';
-import 'model_product_meta.dart';
-import 'model_product_photos.dart';
+import 'package:bs_commerce/app/data/product/model/product_home/photos.dart';
+
+import 'categories.dart';
+import 'info.dart';
+import 'meta.dart';
 
 class ProductHome {
   String? id;
@@ -12,15 +13,15 @@ class ProductHome {
   List<String>? brands;
   List<Categories>? categories;
 
-  ProductHome(
-      {id,
-        info,
-        meta,
-        tags,
-        photos,
-        brands,
-        categories,
-      });
+  ProductHome({
+    id,
+    info,
+    meta,
+    tags,
+    photos,
+    brands,
+    categories,
+  });
 
   ProductHome.fromJson(Map<String, dynamic> json) {
     id = json['id'];

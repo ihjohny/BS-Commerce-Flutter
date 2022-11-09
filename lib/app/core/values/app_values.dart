@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 abstract class AppValues {
   static const double padding = 16;
   static const double padding_zero = 0;
@@ -28,6 +29,7 @@ abstract class AppValues {
   static const double margin_20 = 20;
   static const double extraLargeMargin = 36;
   static const double marginBelowVerticalLine = 64;
+  static const double minimumSpacing = 16;
   static const double extraLargeSpacing = 96;
 
   static const double radius = 16;
@@ -38,6 +40,7 @@ abstract class AppValues {
   static const double largeRadius = 24;
   static const double roundedButtonRadius = 24;
   static const double extraLargeRadius = 36;
+  static const double extraLargeRadius100 = 100;
 
   static const double elevation = 16;
   static const double smallElevation = 8;
@@ -96,4 +99,22 @@ abstract class AppValues {
   static const int defaultThrottleTimeInMilliSeconds = 500;
 
   static const double height_16 = 16;
+
+
+
+  static Widget getVerticalSpace(double spaceValue) {
+    return SizedBox(
+      height: spaceValue,
+    );
+  }
+  static String getCustomizableString(
+      {required String symbol, required String? value}) {
+    return "$symbol$value";
+  }
+
+ static Widget getHorizontalSpace(double spaceValue) {
+    return SizedBox(
+      width: spaceValue,
+    );
+  }
 }

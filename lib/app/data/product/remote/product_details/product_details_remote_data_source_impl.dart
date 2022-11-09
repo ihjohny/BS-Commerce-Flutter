@@ -1,8 +1,7 @@
-import 'package:bs_commerce/app/data/product/model/product_details/ProductDetailsResponse.dart';
 import 'package:bs_commerce/app/data/product/remote/product_details/product_details_remote_data_source.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
 import '../../../../network/dio_provider.dart';
+import '../../model/product_details/response.dart';
 import '/app/core/base/base_remote_source.dart';
 
 class ProductDetailsRemoteDataSourceImpl extends BaseRemoteSource
