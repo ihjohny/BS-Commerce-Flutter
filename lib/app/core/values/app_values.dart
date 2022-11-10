@@ -99,6 +99,7 @@ abstract class AppValues {
   static const int defaultThrottleTimeInMilliSeconds = 500;
 
   static const double height_16 = 16;
+  static const double text_height_18 = 18;
 
 
 

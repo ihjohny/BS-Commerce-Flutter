@@ -17,12 +17,12 @@ class FavoriteIcon extends StatelessWidget {
             shape: BoxShape.circle),
         width: FAVORITE_ICON_BTN_WIDTH,
         child: Material(
-          borderRadius: BorderRadius.circular(AppValues.largeRadius),
+          borderRadius: BorderRadius.circular(AppValues.extraLargeRadius100),
           elevation: 1,
           child: IconButton(
               color: Theme.of(context).scaffoldBackgroundColor,
               onPressed: null,
-              icon: Icon(
+              icon: const Icon(
                 Icons.favorite_border,
                 color: AppColors.colorPrimary,
               )),

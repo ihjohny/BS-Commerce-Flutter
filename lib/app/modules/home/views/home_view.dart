@@ -28,6 +28,9 @@ class HomeView extends BaseView<HomeController> {
 
   Widget _getView() {
     return GridView.count(
+      mainAxisSpacing: 70,
+      shrinkWrap:true,
+      crossAxisSpacing: 0,
       crossAxisCount: 2,
       children: List.generate(
           controller.data?.value?.productHome?.length ?? 0,

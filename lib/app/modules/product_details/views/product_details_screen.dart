@@ -3,6 +3,7 @@ import 'package:bs_commerce/app/core/values/app_values.dart';
 import 'package:bs_commerce/app/modules/product_details/controllers/product_details_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../core/widget/rating_and_sold.dart';
 import '/app/core/base/base_view.dart';
 import 'components/favorite_icon.dart';
 import 'components/quantity_row_view.dart';
@@ -147,23 +148,9 @@ class ItemNameComponent extends StatelessWidget {
               controller.data?.value?.data?.info?.name ?? "",
               style: Theme.of(context).textTheme.titleLarge,
             ),
-            Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children:  [
-                  const Material(
-                    color: Colors.white70,
-                    elevation: 1,
-                    borderRadius: BorderRadius.all(Radius.circular(8)),
-                    child: Padding(
-                        padding: EdgeInsets.all(8),
-                        child:Text("200 sold")),
-                  ),
-                  AppValues.getHorizontalSpace(10),
-                  const Icon(Icons.star_half_outlined)
-                ],
-              ),
+            const RatingAndSoldComponent(
+              ratings: 5,
+              soldValue: 200,
             )
           ],
         ),
@@ -172,3 +159,4 @@ class ItemNameComponent extends StatelessWidget {
     );
   }
 }
+
