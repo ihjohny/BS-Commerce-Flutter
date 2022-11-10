@@ -31,6 +31,7 @@ abstract class AppValues {
   static const double marginBelowVerticalLine = 64;
   static const double minimumSpacing = 16;
   static const double extraLargeSpacing = 96;
+  static const double mainAxisSpacing = 70;
 
   static const double radius = 16;
   static const double radius_zero = 0;

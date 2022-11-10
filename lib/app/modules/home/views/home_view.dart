@@ -1,3 +1,4 @@
+import 'package:bs_commerce/app/core/values/app_values.dart';
 import 'package:bs_commerce/app/modules/home/components/item_card.dart';
 import 'package:bs_commerce/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -28,7 +29,7 @@ class HomeView extends BaseView<HomeController> {
 
   Widget _getView() {
     return GridView.count(
-      mainAxisSpacing: 70,
+      mainAxisSpacing: AppValues.mainAxisSpacing,
       shrinkWrap:true,
       crossAxisSpacing: 0,
       crossAxisCount: 2,
