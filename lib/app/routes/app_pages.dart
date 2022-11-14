@@ -27,6 +27,11 @@ class AppPages {
       binding: AuthBindings(),
     ),
     GetPage(
+      name: _Paths.SIGN_IN,
+      page: () => SignInScreen(),
+      binding: AuthBindings(),
+    ),
+    GetPage(
       name: _Paths.PRODUCT_DETAILS,
       page: () => SignInScreen(),
       binding: AuthBindings(),

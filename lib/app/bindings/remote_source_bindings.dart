@@ -1,11 +1,11 @@
-import 'package:bs_commerce/app/data/product/remote/auth/auth_remote_data_source.dart';
-import 'package:bs_commerce/app/data/product/remote/auth/auth_remote_data_source_imp.dart';
-import 'package:bs_commerce/app/data/product/remote/product_details/product_details_remote_data_source.dart';
-import 'package:bs_commerce/app/data/product/remote/product_details/product_details_remote_data_source_impl.dart';
 import 'package:get/get.dart';
 
-import '../data/product/remote/home/home_remote_data_source.dart';
-import '../data/product/remote/home/home_remote_data_source_impl.dart';
+import '../data/network/remote/auth/auth_remote_data_source.dart';
+import '../data/network/remote/auth/auth_remote_data_source_imp.dart';
+import '../data/network/remote/home/home_remote_data_source.dart';
+import '../data/network/remote/home/home_remote_data_source_impl.dart';
+import '../data/network/remote/product_details/product_details_remote_data_source.dart';
+import '../data/network/remote/product_details/product_details_remote_data_source_impl.dart';
 
 class RemoteSourceBindings implements Bindings {
   @override

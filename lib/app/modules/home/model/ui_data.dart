@@ -1,4 +1,4 @@
-import '../../../data/product/model/product_home/response.dart';
+import '../../../data/network/model/product_home/response.dart';
 
 class UiData {
   final ProductHomeResponse? value;

@@ -1,4 +1,5 @@
-import 'package:bs_commerce/app/data/product/model/product_home/photos.dart';
+
+import 'package:bs_commerce/app/data/network/model/product_home/photos.dart';
 
 import 'categories.dart';
 import 'info.dart';

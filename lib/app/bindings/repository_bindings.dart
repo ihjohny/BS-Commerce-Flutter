@@ -1,11 +1,12 @@
-import 'package:bs_commerce/app/data/product/repository/auth/auth_repo_imp.dart';
-import 'package:bs_commerce/app/data/product/repository/product_details/product_details_repository.dart';
-import 'package:bs_commerce/app/data/product/repository/product_details/product_details_repository_impl.dart';
 import 'package:get/get.dart';
 
-import '../data/product/repository/auth/auth_repo.dart';
-import '../data/product/repository/home/home_repository.dart';
-import '../data/product/repository/home/home_repository_impl.dart';
+import '../data/network/repository/auth/auth_repo.dart';
+import '../data/network/repository/auth/auth_repo_imp.dart';
+import '../data/network/repository/home/home_repository.dart';
+import '../data/network/repository/home/home_repository_impl.dart';
+import '../data/network/repository/product_details/product_details_repository.dart';
+import '../data/network/repository/product_details/product_details_repository_impl.dart';
+
 
 class RepositoryBindings implements Bindings {
   @override

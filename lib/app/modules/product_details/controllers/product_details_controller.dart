@@ -1,7 +1,7 @@
-import 'package:bs_commerce/app/data/product/repository/product_details/product_details_repository.dart';
 import 'package:bs_commerce/app/modules/product_details/model/product_details_ui_data.dart';
 import 'package:get/get.dart';
-import '../../../data/product/model/product_details/response.dart';
+import '../../../data/network/model/product_details/response.dart';
+import '../../../data/network/repository/product_details/product_details_repository.dart';
 import '/app/core/base/base_controller.dart';
 
 class ProductDetailsController extends BaseController {

@@ -4,7 +4,7 @@ import 'package:bs_commerce/app/modules/product_details/views/components/favorit
 import 'package:flutter/material.dart';
 
 import '../../../core/values/app_colors.dart';
-import '../../../data/product/model/product_home/home.dart';
+import '../../../data/network/model/product_home/home.dart';
 import '../../../theme/dimen.dart';
 
 class ProductCard extends StatelessWidget {

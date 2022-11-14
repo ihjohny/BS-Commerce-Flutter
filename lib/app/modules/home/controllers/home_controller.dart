@@ -1,7 +1,7 @@
 import 'package:get/get.dart';
 
-import '../../../data/product/model/product_home/response.dart';
-import '../../../data/product/repository/home/home_repository.dart';
+import '../../../data/network/model/product_home/response.dart';
+import '../../../data/network/repository/home/home_repository.dart';
 import '/app/core/base/base_controller.dart';
 import '/app/modules/home/model/ui_data.dart';
 

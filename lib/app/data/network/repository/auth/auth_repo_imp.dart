@@ -1,9 +1,9 @@
-import 'package:bs_commerce/app/data/product/model/auth/registration_success.dart';
-import 'package:bs_commerce/app/data/product/model/auth/send_otp_success.dart';
-import 'package:bs_commerce/app/data/product/remote/auth/auth_remote_data_source.dart';
-import 'package:bs_commerce/app/data/product/repository/auth/auth_repo.dart';
 import 'package:bs_commerce/app/modules/auth/model/user.dart';
 import 'package:get/get.dart';
+
+import '../../model/auth/registration_success.dart';
+import '../../remote/auth/auth_remote_data_source.dart';
+import 'auth_repo.dart';
 
 class AuthRepoImp extends AuthRepo {
   final AuthDataSource _remoteSource =

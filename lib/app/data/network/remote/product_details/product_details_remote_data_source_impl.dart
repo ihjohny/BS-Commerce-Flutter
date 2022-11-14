@@ -1,4 +1,4 @@
-import 'package:bs_commerce/app/data/product/remote/product_details/product_details_remote_data_source.dart';
+import 'package:bs_commerce/app/data/network/remote/product_details/product_details_remote_data_source.dart';
 import 'package:dio/dio.dart';
 import '../../../../network/dio_provider.dart';
 import '../../model/product_details/response.dart';
