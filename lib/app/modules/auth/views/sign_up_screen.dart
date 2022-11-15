@@ -1,6 +1,7 @@
 import 'package:bs_commerce/app/core/base/base_view.dart';
 import 'package:bs_commerce/app/modules/auth/components/my_auth_button.dart';
 import 'package:bs_commerce/app/modules/auth/controllers/auth_controller.dart';
+import 'package:bs_commerce/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/preferred_size.dart';
@@ -71,7 +72,20 @@ class SignUpScreen extends BaseView<AuthController> {
           getOtpView(),
           controller.namePasswordState.value
               ? getNameAndPasswordView()
-              : const SizedBox()
+              : const SizedBox(),
+          AppValues.getVerticalSpace(AppValues.margin_20),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              const Text(AppValues.alreadyHaveAnAccount,style: TextStyle(
+                  color: AppColors.textColorGreyLight
+              ),),
+              AppValues.getHorizontalSpace(AppValues.margin_10),
+              GestureDetector(onTap: (){
+                Get.toNamed(Routes.SIGN_IN);
+              }, child: const Text(AppValues.signIn,style: TextStyle(color: AppColors.colorBlack),))
+            ],
+          )
         ],
       ),
     );
@@ -80,36 +94,8 @@ class SignUpScreen extends BaseView<AuthController> {
   Column getNameAndPasswordView() {
     return Column(
       children: [
-        AppValues.getVerticalSpace(AppValues.margin_10),
-        MyTextFormField(
-            editingController: nameControllerET,
-            labelText: AppValues.enterYourName,
-            prefixIcon: const Icon(
-              Icons.email_outlined,
-              color: AppColors.iconColorDefault,
-            )),
-        AppValues.getVerticalSpace(AppValues.margin_10),
-        MyTextFormField(
-            prefixIcon: const Icon(
-              Icons.lock,
-              color: AppColors.iconColorDefault,
-            ),
-            editingController: passwordControllerET,
-            labelText: AppValues.enterYourPassword,
-            obscureText: controller.obsecureState.value,
-            suffixIcon: IconButton(
-              icon: Icon(
-                controller.obsecureState.value
-                    ? Icons.visibility_off
-                    : Icons.visibility_outlined,
-                color: AppColors.iconColorDefault,
-              ),
-              onPressed: () {
-                controller.obsecureState.value =
-                    !controller.obsecureState.value;
-              },
-            )),
-        AppValues.getVerticalSpace(AppValues.margin_15),
+        getNamedView(),
+        getPasswordView(),
         MyAuthButton(
             onPressed: () {
               if (_formNameKey.currentState!.validate() ||
@@ -123,9 +109,68 @@ class SignUpScreen extends BaseView<AuthController> {
             },
             buttonText: AppValues.signUp),
         AppValues.getVerticalSpace(AppValues.margin_10),
-        const AuthenticationFooter()
+        const AuthenticationFooter(),
       ],
     );
+  }
+
+  Widget getNamedView() {
+    return Column(children: [
+      AppValues.getVerticalSpace(AppValues.margin_10),
+      MyTextFormField(
+          onPressed: (value) {
+            if (value.isNotEmpty) {
+              controller.nameEditTextState.value = true;
+            } else {
+              controller.nameEditTextState.value = false;
+            }
+          },
+          editingController: nameControllerET,
+          labelText: AppValues.enterYourName,
+          prefixIcon: Icon(
+            Icons.email_outlined,
+            color: controller.nameEditTextState.value
+                ? AppColors.colorBlack
+                : AppColors.iconColorDefault,
+          )),
+      AppValues.getVerticalSpace(AppValues.margin_10),
+    ]);
+  }
+  Widget getPasswordView() {
+    return Column(children: [
+      MyTextFormField(
+          onPressed: (value) {
+            if (value.isNotEmpty) {
+              controller.passwordEditTextState.value = true;
+            } else {
+              controller.passwordEditTextState.value = false;
+            }
+          },
+          prefixIcon: Icon(
+            Icons.lock,
+            color: controller.passwordEditTextState.value
+                ? AppColors.colorBlack
+                : AppColors.iconColorDefault,
+          ),
+          editingController: passwordControllerET,
+          labelText: AppValues.enterYourPassword,
+          obscureText: controller.obsecureState.value,
+          suffixIcon: IconButton(
+            icon: Icon(
+              controller.obsecureState.value
+                  ? Icons.visibility_off
+                  : Icons.visibility_outlined,
+              color: controller.passwordEditTextState.value
+                  ? AppColors.colorBlack
+                  : AppColors.iconColorDefault,
+            ),
+            onPressed: () {
+              controller.obsecureState.value =
+              !controller.obsecureState.value;
+            },
+          )),
+      AppValues.getVerticalSpace(AppValues.margin_15),
+    ]);
   }
 
   Row getOtpView() {
@@ -136,9 +181,18 @@ class SignUpScreen extends BaseView<AuthController> {
             child: MyTextFormField(
                 editingController: otpControllerET,
                 labelText: AppValues.otp,
-                prefixIcon: const Icon(
+                onPressed: (value) {
+                  if (value.isNotEmpty) {
+                    controller.otpEditTextState.value = true;
+                  } else {
+                    controller.otpEditTextState.value = false;
+                  }
+                },
+                prefixIcon: Icon(
                   Icons.sms_outlined,
-                  color: AppColors.iconColorDefault,
+                  color: controller.otpEditTextState.value
+                      ? AppColors.colorBlack
+                      : AppColors.iconColorDefault,
                 ))),
         Expanded(
           flex: 1,
@@ -152,9 +206,11 @@ class SignUpScreen extends BaseView<AuthController> {
                   controller.sendOTP(numberControllerET.text).then((otp) {
                     otpControllerET.text = otp;
                     controller.namePasswordState.value = value;
+                    controller.otpEditTextState.value = true;
                   });
                 } else {
                   controller.otpSwitchState.value = false;
+                  controller.otpEditTextState.value = false;
                   otpControllerET.text = "";
                   controller.namePasswordState.value = false;
                 }
@@ -175,9 +231,18 @@ class SignUpScreen extends BaseView<AuthController> {
         child: MyTextFormField(
             editingController: numberControllerET,
             labelText: AppValues.enterYourNumberEmail,
-            prefixIcon: const Icon(
+            onPressed: (value) {
+              if (value.isNotEmpty) {
+                controller.numberEditTextState.value = true;
+              } else {
+                controller.numberEditTextState.value = false;
+              }
+            },
+            prefixIcon: Icon(
               Icons.email_outlined,
-              color: AppColors.iconColorDefault,
+              color: controller.numberEditTextState.value
+                  ? AppColors.colorBlack
+                  : AppColors.iconColorDefault,
             )));
   }
 

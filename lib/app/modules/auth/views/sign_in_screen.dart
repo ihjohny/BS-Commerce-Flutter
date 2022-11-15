@@ -20,10 +20,12 @@ class SignInScreen extends BaseView<AuthController> {
     );
     ;
   }
+
   final _formKey = GlobalKey<FormState>();
 
   final TextEditingController userNameController = TextEditingController();
   final TextEditingController passwordController = TextEditingController();
+
   @override
   Widget body(BuildContext context) {
     return Container(
@@ -41,44 +43,77 @@ class SignInScreen extends BaseView<AuthController> {
           child: Form(
             key: _formKey,
             child: Column(
-        mainAxisSize: MainAxisSize.max,
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-            Image.asset('images/bs_logo.png',height: AppValues.margin_100),
-            AppValues.getVerticalSpace(AppValues.margin_20),
-            const Text("Login To Your Account",style: TextStyle(
-              fontSize: 25,
-              fontWeight: FontWeight.bold
-            ),),
-            AppValues.getVerticalSpace(AppValues.margin_20),
-            MyTextFormField(editingController: userNameController,labelText: "Enter Your Number or Email", prefixIcon: const Icon( Icons.email_outlined,color: AppColors.iconColorDefault)),
-            AppValues.getVerticalSpace(AppValues.margin_10),
-            MyTextFormField(
-                prefixIcon: const Icon(Icons.lock, color: AppColors.iconColorDefault,),
-                editingController: passwordController,
-                labelText: "Enter Your Password",
-                obscureText: controller.obsecureState.value,
-                suffixIcon: IconButton(
-                  icon: Icon(
-                    controller.obsecureState.value?Icons.visibility_off:Icons.visibility_outlined,
-                    color: AppColors.iconColorDefault,
-                  ),
+              mainAxisSize: MainAxisSize.max,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Image.asset('images/bs_logo.png', height: AppValues.margin_100),
+                AppValues.getVerticalSpace(AppValues.margin_20),
+                const Text(
+                  AppValues.loginToYoureAccount,
+                  style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+                ),
+                AppValues.getVerticalSpace(AppValues.margin_20),
+                MyTextFormField(
+                    onPressed: (value) {
+                      if(value.isNotEmpty){
+                        controller.userNameEditTextState.value = true;
+                      }else{
+                        controller.userNameEditTextState.value = false;
+                      }
+                    },
+                    editingController: userNameController,
+                    labelText: AppValues.enterYourNumberEmail,
+                    prefixIcon:  Icon(Icons.email_outlined,
+                        color: controller.userNameEditTextState.value
+                            ? AppColors.colorBlack
+                            : AppColors.iconColorDefault)),
+                AppValues.getVerticalSpace(AppValues.margin_10),
+                MyTextFormField(
+                    onPressed: (value) {
+                      if(value.isNotEmpty){
+                        controller.passwordSignInEditTextState.value = true;
+                      }else{
+                        controller.passwordSignInEditTextState.value = false;
+                      }
+                    },
+                    prefixIcon: Icon(
+                      Icons.lock,
+                      color:controller.passwordSignInEditTextState.value
+                          ? AppColors.colorBlack
+                          : AppColors.iconColorDefault,
+                    ),
+                    editingController: passwordController,
+                    labelText: AppValues.enterYourPassword,
+                    obscureText: controller.obsecureState.value,
+                    suffixIcon: IconButton(
+                      icon: Icon(
+                        controller.obsecureState.value
+                            ? Icons.visibility_off
+                            : Icons.visibility_outlined,
+                        color: AppColors.iconColorDefault,
+                      ),
+                      onPressed: () {
+                        controller.obsecureState.value =
+                            !controller.obsecureState.value;
+                      },
+                    )),
+                AppValues.getVerticalSpace(AppValues.margin_10),
+                MyAuthButton(
                   onPressed: () {
-                    controller.obsecureState.value =
-                    !controller.obsecureState.value;
+                    if (_formKey.currentState!.validate() ||
+                        userNameController.text.length ==
+                            AppValues.phoneNumberLength) {
+                      makeSignIn(
+                          userNameController.text, passwordController.text);
+                    }
                   },
-                )),
-            AppValues.getVerticalSpace(AppValues.margin_10),
-            MyAuthButton(onPressed: (){
-              if(_formKey.currentState!.validate()||userNameController.text.length == AppValues.phoneNumberLength){
-                makeSignIn(userNameController.text,passwordController.text);
-              }
-            },buttonText: "Sign In",),
-            AppValues.getVerticalSpace(AppValues.margin_10),
-            const Text("Forgot The Password?"),
-            AppValues.getVerticalSpace(AppValues.margin_10),
-            const AuthenticationFooter(),
-        ],
+                  buttonText: AppValues.signIn,
+                ),
+                AppValues.getVerticalSpace(AppValues.margin_10),
+                const Text(AppValues.forgotPassword),
+                AppValues.getVerticalSpace(AppValues.margin_10),
+                const AuthenticationFooter(),
+              ],
             ),
           ),
         ),

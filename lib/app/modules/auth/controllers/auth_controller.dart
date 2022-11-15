@@ -1,9 +1,11 @@
 import 'package:bs_commerce/app/core/base/base_controller.dart';
 import 'package:bs_commerce/app/data/local/preference/preference_manager.dart';
+import 'package:bs_commerce/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
 import '../../../core/values/app_values.dart';
 import '../../../data/network/repository/auth/auth_repo.dart';
+import '../../home/views/home_view.dart';
 import '../model/user.dart';
 import '../views/sign_in_screen.dart';
 
@@ -13,6 +15,12 @@ class AuthController extends BaseController {
       Get.find(tag: (PreferenceManager).toString());
   Rx<bool> otpSwitchState = Rx(false);
   Rx<bool> obsecureState = Rx(true);
+  Rx<bool> nameEditTextState = Rx(false);
+  Rx<bool> passwordEditTextState = Rx(false);
+  Rx<bool> otpEditTextState = Rx(false);
+  Rx<bool> numberEditTextState = Rx(false);
+  Rx<bool> userNameEditTextState = Rx(false);
+  Rx<bool> passwordSignInEditTextState = Rx(false);
   Rx<bool> namePasswordState = Rx(false);
 
   Future<dynamic> sendOTP(String numberOrEmail) async {
@@ -51,6 +59,7 @@ class AuthController extends BaseController {
               .then((value) {
             if (value) {
               Get.snackbar(AppValues.tokenSaveSuccessfully, message);
+              Get.offNamed(Routes.HOME);
             }
           });
         }), onError: (errorMessage) {

@@ -33,8 +33,8 @@ class AppPages {
     ),
     GetPage(
       name: _Paths.PRODUCT_DETAILS,
-      page: () => SignInScreen(),
-      binding: AuthBindings(),
+      page: () => ProductDetailsScreen(),
+      binding: ProductDetailsBinding(),
     ),
   ];
 }

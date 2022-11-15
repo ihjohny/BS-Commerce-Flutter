@@ -119,11 +119,15 @@ abstract class AppValues {
   static const String verify = "Verify";
   static const String otp = "OTP";
   static const String signUp = "Sign Up";
+  static const String signIn = "Sign In";
+  static const String alreadyHaveAnAccount = "Already have an account?";
   static const String error = "Error";
   static const String enterYourNumberEmail = "Enter Your Number or Email";
+  static const String forgotPassword = "Forgot Your Password?";
   static const String enterYourPassword = "Enter Your Password";
   static const String enterYourName = "Enter Your Name";
   static const String createYourAccount = "Create Your Account";
+  static const String loginToYoureAccount = "Log In to Your Account";
   static const String tokenSaveSuccessfully = "Token Save Successfully";
   static const String thisFieldMustNotBeEmpty = 'This field must not be empty';
 

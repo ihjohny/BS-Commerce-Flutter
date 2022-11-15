@@ -9,7 +9,7 @@ class MyTextFormField extends StatelessWidget {
   final bool? obscureText;
   final Icon? prefixIcon;
   final IconButton? suffixIcon;
-  Function()? onPressed;
+  Function(String value)? onPressed;
 
    MyTextFormField(
       {Key? key,
@@ -26,7 +26,7 @@ class MyTextFormField extends StatelessWidget {
     return TextFormField(
       textAlign: TextAlign.start,
         controller: editingController,
-
+        onChanged: onPressed,
         validator: (value) {
           if (value == null || value.isEmpty) {
             return AppValues.thisFieldMustNotBeEmpty;
@@ -44,8 +44,6 @@ class MyTextFormField extends StatelessWidget {
                 horizontal: AppValues.padding_4),
             prefixIcon: prefixIcon,
             suffixIcon: suffixIcon,
-            suffixIconColor: AppColors.searchFieldBgColor,
-            prefixIconColor: AppColors.searchFieldBgColor,
             border: OutlineInputBorder(
               borderSide: BorderSide.none,
               borderRadius: BorderRadius.circular(AppValues.margin_20),
