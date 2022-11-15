@@ -29,7 +29,7 @@ class MyTextFormField extends StatelessWidget {
 
         validator: (value) {
           if (value == null || value.isEmpty) {
-            return 'This field must not be empty';
+            return AppValues.thisFieldMustNotBeEmpty;
           }
 
           return null;
@@ -48,7 +48,7 @@ class MyTextFormField extends StatelessWidget {
             prefixIconColor: AppColors.searchFieldBgColor,
             border: OutlineInputBorder(
               borderSide: BorderSide.none,
-              borderRadius: BorderRadius.circular(20),
+              borderRadius: BorderRadius.circular(AppValues.margin_20),
             ),
             iconColor: AppColors.searchFieldBgColor,
             floatingLabelAlignment: FloatingLabelAlignment.center,

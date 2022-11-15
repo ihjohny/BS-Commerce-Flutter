@@ -26,7 +26,7 @@ class RatingAndSoldComponent extends StatelessWidget {
                 padding: EdgeInsets.all(8),
                 child:Text("${soldValue.toString()} sold")),
           ),
-          AppValues.getHorizontalSpace(10),
+          AppValues.getHorizontalSpace(AppValues.margin_20),
           const Icon(Icons.star_half_outlined),
           Text(ratings.toString(),style: Theme.of(context).textTheme.titleMedium,)
         ],

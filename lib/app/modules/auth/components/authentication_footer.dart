@@ -32,35 +32,50 @@ class AuthenticationFooter extends StatelessWidget {
                 )),
           ],
         ),
-        AppValues.getVerticalSpace(10),
+        AppValues.getVerticalSpace(AppValues.margin_10),
         Row(
           children: [
             Expanded(
                 flex: 1,
                 child: AppleAuthButton(
+                  style: const AuthButtonStyle(
+                    height: 50,
+                      width: 50,
+                      buttonColor: AppColors.colorWhite,
+                      borderRadius: 200,
+                      iconBackground: AppColors.colorPrimary),
                   onPressed: () {
-                    debugPrint("");
+                    ///TODO
                   },
                   text: "",
                 )),
-            AppValues.getHorizontalSpace(10),
+            AppValues.getHorizontalSpace(AppValues.margin_20),
             Expanded(
               flex: 1,
               child: GoogleAuthButton(
+                  style: const AuthButtonStyle(
+                      buttonColor: AppColors.colorWhite,
+                      height: 50,
+                      width: 50,
+                      borderRadius: 50,
+                      iconBackground: AppColors.colorPrimary),
                   onPressed: () {
-                    debugPrint("");
+                    ///TODO
                   },
                   text: ""),
             ),
-            AppValues.getHorizontalSpace(10),
+            AppValues.getHorizontalSpace(AppValues.margin_20),
             Expanded(
                 flex: 1,
                 child: FacebookAuthButton(
                   style: const AuthButtonStyle(
                       buttonColor: AppColors.colorWhite,
+                      borderRadius: 50,
+                      height: 50,
+                      width: 50,
                       iconBackground: AppColors.colorPrimary),
-                  onPressed: () {
-                    debugPrint("");
+                  onPressed: (){
+                    ///TODO
                   },
                   text: "",
                 )),

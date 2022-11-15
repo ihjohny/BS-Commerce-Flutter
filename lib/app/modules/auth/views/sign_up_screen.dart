@@ -1,7 +1,6 @@
 import 'package:bs_commerce/app/core/base/base_view.dart';
 import 'package:bs_commerce/app/modules/auth/components/my_auth_button.dart';
 import 'package:bs_commerce/app/modules/auth/controllers/auth_controller.dart';
-import 'package:bs_commerce/app/modules/auth/views/sign_in_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/preferred_size.dart';
@@ -31,27 +30,36 @@ class SignUpScreen extends BaseView<AuthController> {
 
   @override
   Widget body(BuildContext context) {
-    return Center(
+    return Container(
+      height: MediaQuery.of(context).size.height,
+      color: AppColors.colorWhite,
       child: Obx(() => _getView()),
     );
   }
 
   Widget _getView() {
-    return SingleChildScrollView(
-      child: Center(
-          child: Container(
-        padding: const EdgeInsets.all(20),
-        color: AppColors.colorWhite,
-        child: Column(
-          mainAxisSize: MainAxisSize.max,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            numberInputForm(),
-            AppValues.getVerticalSpace(15),
-            nameInputForm()
-          ],
+    return Center(
+      child: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(20),
+          child: Column(
+            mainAxisSize: MainAxisSize.max,
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Image.asset('images/bs_logo.png', height: AppValues.margin_100),
+              AppValues.getVerticalSpace(AppValues.margin_20),
+              const Text(
+                AppValues.createYourAccount,
+                style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+              ),
+              AppValues.getVerticalSpace(AppValues.margin_20),
+              numberInputForm(),
+              AppValues.getVerticalSpace(AppValues.margin_20),
+              nameInputForm()
+            ],
+          ),
         ),
-      )),
+      ),
     );
   }
 
@@ -62,52 +70,61 @@ class SignUpScreen extends BaseView<AuthController> {
         children: [
           getOtpView(),
           controller.namePasswordState.value
-              ? Column(
-                  children: [
-                    AppValues.getVerticalSpace(10),
-                    MyTextFormField(
-                        editingController: nameControllerET,
-                        labelText: "Enter Your Name",
-                        prefixIcon: const Icon(
-                          Icons.email_outlined,
-                          color: AppColors.iconColorDefault,
-                        )),
-                    AppValues.getVerticalSpace(10),
-                    MyTextFormField(
-                      prefixIcon: Icon(Icons.lock, color: AppColors.iconColorDefault,),
-                        editingController: passwordControllerET,
-                        labelText: "Enter Your Password",
-                        obscureText: controller.obsecureState.value,
-                        suffixIcon: IconButton(
-                          icon: Icon(
-                            controller.obsecureState.value?Icons.visibility_off:Icons.visibility_outlined,
-                            color: AppColors.iconColorDefault,
-                          ),
-                          onPressed: () {
-                            controller.obsecureState.value =
-                                !controller.obsecureState.value;
-                          },
-                        )),
-                    AppValues.getVerticalSpace(15),
-                    MyAuthButton(
-                        onPressed: () {
-                          if (_formNameKey.currentState!.validate() ||
-                              _formNumberKey.currentState!.validate()) {
-                            controller.registerUser(
-                                nameControllerET.text,
-                                numberControllerET.text,
-                                passwordControllerET.text,
-                                otpControllerET.text);
-                          }
-                        },
-                        buttonText: "Sign Up"),
-                    AppValues.getVerticalSpace(10),
-                    const AuthenticationFooter()
-                  ],
-                )
+              ? getNameAndPasswordView()
               : const SizedBox()
         ],
       ),
+    );
+  }
+
+  Column getNameAndPasswordView() {
+    return Column(
+      children: [
+        AppValues.getVerticalSpace(AppValues.margin_10),
+        MyTextFormField(
+            editingController: nameControllerET,
+            labelText: AppValues.enterYourName,
+            prefixIcon: const Icon(
+              Icons.email_outlined,
+              color: AppColors.iconColorDefault,
+            )),
+        AppValues.getVerticalSpace(AppValues.margin_10),
+        MyTextFormField(
+            prefixIcon: const Icon(
+              Icons.lock,
+              color: AppColors.iconColorDefault,
+            ),
+            editingController: passwordControllerET,
+            labelText: AppValues.enterYourPassword,
+            obscureText: controller.obsecureState.value,
+            suffixIcon: IconButton(
+              icon: Icon(
+                controller.obsecureState.value
+                    ? Icons.visibility_off
+                    : Icons.visibility_outlined,
+                color: AppColors.iconColorDefault,
+              ),
+              onPressed: () {
+                controller.obsecureState.value =
+                    !controller.obsecureState.value;
+              },
+            )),
+        AppValues.getVerticalSpace(AppValues.margin_15),
+        MyAuthButton(
+            onPressed: () {
+              if (_formNameKey.currentState!.validate() ||
+                  _formNumberKey.currentState!.validate()) {
+                controller.registerUser(
+                    nameControllerET.text,
+                    numberControllerET.text,
+                    passwordControllerET.text,
+                    otpControllerET.text);
+              }
+            },
+            buttonText: AppValues.signUp),
+        AppValues.getVerticalSpace(AppValues.margin_10),
+        const AuthenticationFooter()
+      ],
     );
   }
 
@@ -118,7 +135,7 @@ class SignUpScreen extends BaseView<AuthController> {
             flex: 3,
             child: MyTextFormField(
                 editingController: otpControllerET,
-                labelText: "OTP",
+                labelText: AppValues.otp,
                 prefixIcon: const Icon(
                   Icons.sms_outlined,
                   color: AppColors.iconColorDefault,
@@ -127,7 +144,8 @@ class SignUpScreen extends BaseView<AuthController> {
           flex: 1,
           child: Switch(
             onChanged: (bool value) {
-              if (numberControllerET.text.length == 11 ||
+              if (numberControllerET.text.length ==
+                      AppValues.phoneNumberLength ||
                   _formNumberKey.currentState!.validate()) {
                 if (value) {
                   controller.otpSwitchState.value = value;
@@ -146,7 +164,7 @@ class SignUpScreen extends BaseView<AuthController> {
             value: controller.otpSwitchState.value,
           ),
         ),
-        const Expanded(flex: 1, child: Text("Verify"))
+        const Expanded(flex: 1, child: Text(AppValues.verify))
       ],
     );
   }
@@ -156,7 +174,7 @@ class SignUpScreen extends BaseView<AuthController> {
         key: _formNumberKey,
         child: MyTextFormField(
             editingController: numberControllerET,
-            labelText: "Enter Your Number or Email",
+            labelText: AppValues.enterYourNumberEmail,
             prefixIcon: const Icon(
               Icons.email_outlined,
               color: AppColors.iconColorDefault,

@@ -38,7 +38,7 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
                     SizedBox(
                       width: MediaQuery.of(context).size.width,
                       child: Material(
-                        elevation: 0.5,
+                        elevation: AppValues.elevation_half,
                         child: Image.network(
                             controller.data?.value?.data?.photos?[0].url ?? "",
                             fit: BoxFit.fill),
@@ -54,7 +54,7 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
                           const Divider(),
                           AppValues.getVerticalSpace(8),
                           Text(
-                            "Description",
+                            AppValues.description,
                             style: Theme.of(context).textTheme.titleLarge,
                           ),
                           Text(controller
@@ -83,7 +83,7 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            const Text("Total Price"),
+            const Text(AppValues.totalPrice),
             AppValues.getVerticalSpace(5),
             Text(
               AppValues.getCustomizableString(
@@ -93,7 +93,7 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
             )
           ],
         ),
-       AppValues.getHorizontalSpace(15),
+       AppValues.getHorizontalSpace(AppValues.margin_15),
         TextButton(
           style: ButtonStyle(
               backgroundColor: MaterialStateProperty.all(Colors.black),
@@ -103,7 +103,7 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
                     BorderRadius.circular(AppValues.extraLargeRadius100),
               ))),
           onPressed: () {
-            print("");
+            ///TODO
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30),
@@ -113,9 +113,9 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
                   Icons.shopping_bag_outlined,
                   color: AppColors.colorWhite,
                 ),
-                AppValues.getHorizontalSpace(10),
+                AppValues.getHorizontalSpace(AppValues.margin_10),
                 const Text(
-                  "Add To Cart",
+                  AppValues.addToCart,
                   style: TextStyle(color: Colors.white, fontSize: 15),
                 ),
               ],

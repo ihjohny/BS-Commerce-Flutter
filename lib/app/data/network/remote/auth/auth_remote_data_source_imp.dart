@@ -1,3 +1,4 @@
+import 'package:bs_commerce/app/core/values/app_values.dart';
 import 'package:bs_commerce/app/modules/auth/model/user.dart';
 import 'package:bs_commerce/app/network/dio_provider.dart';
 import 'package:dio/dio.dart';
@@ -22,7 +23,7 @@ class AuthDataSourceImp extends BaseRemoteSource implements AuthDataSource {
     return SendOtpSuccessResponse.fromJson(response.data)
             .data
             ?.message
-            ?.substring(24, 30) ??
+            ?.substring(AppValues.value_24, AppValues.value_30) ??
         "";
   }
 
@@ -37,8 +38,6 @@ class AuthDataSourceImp extends BaseRemoteSource implements AuthDataSource {
     });
 
     return callApiWithErrorParser(dioCall).then((response) {
-      debugPrint(response.data.toString());
-
       return _parseRegistrationSuccessResponse(response);
     });
   }
@@ -55,9 +54,8 @@ class AuthDataSourceImp extends BaseRemoteSource implements AuthDataSource {
         .post(endpoint, data: {'phone': numberOrEmail, "password": password});
 
     return callApiWithErrorParser(dioCall).then((response) {
-      debugPrint(response.data.toString());
-
-      return Future(() => "");
+      return Future(
+          () => (response.data as Map<dynamic, dynamic>)["data"]["token"]);
     });
   }
 }

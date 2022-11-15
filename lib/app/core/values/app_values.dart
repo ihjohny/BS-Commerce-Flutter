@@ -22,11 +22,13 @@ abstract class AppValues {
   static const double margin_40 = 40;
   static const double margin_32 = 32;
   static const double margin_18 = 18;
+  static const double margin_10 = 10;
+  static const double margin_15 = 15;
+  static const double margin_100 = 100;
   static const double margin_2 = 2;
   static const double margin_4 = 4;
   static const double margin_6 = 6;
   static const double margin_12 = 12;
-  static const double margin_10 = 10;
   static const double margin_30 = 30;
   static const double margin_20 = 20;
   static const double extraLargeMargin = 36;
@@ -46,6 +48,7 @@ abstract class AppValues {
   static const double extraLargeRadius100 = 100;
 
   static const double elevation = 16;
+  static const double elevation_half = 0.5;
   static const double smallElevation = 8;
   static const double extraSmallElevation = 4;
   static const double largeElevation = 24;
@@ -104,7 +107,25 @@ abstract class AppValues {
   static const double height_16 = 16;
   static const double text_height_18 = 18;
 
+  static const double phoneNumberLength = 11;
+  static const int value_24 = 24;
+  static const int value_30 = 30;
+  static const int status_code_201 = 201;
 
+///String Value
+  static const String description = "Description";
+  static const String totalPrice = "Total Price";
+  static const String addToCart = "Add To Cart";
+  static const String verify = "Verify";
+  static const String otp = "OTP";
+  static const String signUp = "Sign Up";
+  static const String error = "Error";
+  static const String enterYourNumberEmail = "Enter Your Number or Email";
+  static const String enterYourPassword = "Enter Your Password";
+  static const String enterYourName = "Enter Your Name";
+  static const String createYourAccount = "Create Your Account";
+  static const String tokenSaveSuccessfully = "Token Save Successfully";
+  static const String thisFieldMustNotBeEmpty = 'This field must not be empty';
 
   static Widget getVerticalSpace(double spaceValue) {
     return SizedBox(
@@ -121,4 +142,6 @@ abstract class AppValues {
       width: spaceValue,
     );
   }
+
+  static const String AUTH_TOKEN = "auth_token";
 }

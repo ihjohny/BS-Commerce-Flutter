@@ -11,12 +11,8 @@ class ProductDetailsRemoteDataSourceImpl extends BaseRemoteSource
     var endpoint = "${DioProvider.baseUrl}api/customer/products/$productId";
     var dioCall = dioClient.get(endpoint);
 
-    try {
       return callApiWithErrorParser(dioCall)
           .then((response) => _parseProductCatalogResponse(response));
-    } catch (e) {
-      rethrow;
-    }
   }
 
   ProductDetailsResponse _parseProductCatalogResponse(
