@@ -16,6 +16,9 @@ class HomeController extends BaseController {
     callDataService(_repository.getHomePageProducts(),
         onSuccess: _handleDataResponse);
   }
+  onRefresh(){
+    getHomePageProducts();
+  }
 
   _handleDataResponse(ProductHomeResponse data) {
     _data(UiData(data));

@@ -103,7 +103,7 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
                     BorderRadius.circular(AppValues.extraLargeRadius100),
               ))),
           onPressed: () {
-            ///TODO
+            controller.addToCart(controller.data?.value?.data?.id??"", 1);
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30),

@@ -1,5 +1,6 @@
 
 import 'package:bs_commerce/app/data/network/repository/product_details/product_details_repository.dart';
+import 'package:bs_commerce/app/modules/product_details/model/add_to_cart_response.dart';
 import 'package:get/get.dart';
 
 import '../../model/product_details/response.dart';
@@ -12,5 +13,10 @@ class ProductDetailsRepositoryImpl implements ProductDetailsRepository {
   @override
   Future<ProductDetailsResponse> getProductDetails(String productId) {
     return _remoteSource.getProductDetails(productId);
+  }
+
+  @override
+  Future addToCart(String productId, int quantity) {
+    return _remoteSource.addToCart(productId, quantity);
   }
 }
