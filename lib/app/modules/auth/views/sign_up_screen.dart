@@ -1,4 +1,5 @@
 import 'package:bs_commerce/app/core/base/base_view.dart';
+import 'package:bs_commerce/app/core/widget/custom_app_bar.dart';
 import 'package:bs_commerce/app/modules/auth/components/my_auth_button.dart';
 import 'package:bs_commerce/app/modules/auth/controllers/auth_controller.dart';
 import 'package:bs_commerce/app/routes/app_pages.dart';
@@ -25,8 +26,18 @@ class SignUpScreen extends BaseView<AuthController> {
   PreferredSizeWidget? appBar(BuildContext context) {
     return AppBar(
       backgroundColor: AppColors.colorWhite,
+      automaticallyImplyLeading:false,
       elevation: 0,
     );
+  }
+  @override
+  Color statusBarColor() {
+    return AppColors.colorWhite;
+  }
+
+  @override
+  Color pageBackgroundColor() {
+    return AppColors.colorWhite;
   }
 
   @override
@@ -82,7 +93,7 @@ class SignUpScreen extends BaseView<AuthController> {
               ),),
               AppValues.getHorizontalSpace(AppValues.margin_10),
               GestureDetector(onTap: (){
-                Get.toNamed(Routes.SIGN_IN);
+                Get.offNamed(Routes.SIGN_IN);
               }, child: const Text(AppValues.signIn,style: TextStyle(color: AppColors.colorBlack),))
             ],
           )

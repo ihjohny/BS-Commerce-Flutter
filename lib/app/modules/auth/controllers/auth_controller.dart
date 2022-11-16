@@ -5,7 +5,6 @@ import 'package:get/get.dart';
 
 import '../../../core/values/app_values.dart';
 import '../../../data/network/repository/auth/auth_repo.dart';
-import '../../home/views/home_view.dart';
 import '../model/user.dart';
 import '../views/sign_in_screen.dart';
 

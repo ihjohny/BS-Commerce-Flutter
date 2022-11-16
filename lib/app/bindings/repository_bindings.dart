@@ -14,6 +14,7 @@ class RepositoryBindings implements Bindings {
     Get.lazyPut<HomeRepository>(
       () => HomeRepositoryImpl(),
       tag: (HomeRepository).toString(),
+      fenix: true
     );
     Get.lazyPut<ProductDetailsRepository>(() => ProductDetailsRepositoryImpl(),
         tag: (ProductDetailsRepository).toString(), fenix: true);
