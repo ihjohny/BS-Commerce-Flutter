@@ -1,6 +1,6 @@
 import 'package:bs_commerce/app/core/values/app_values.dart';
 import 'package:flutter/material.dart';
-
+import 'package:google_fonts/google_fonts.dart';
 import '../../../core/values/app_colors.dart';
 
 class MyTextFormField extends StatelessWidget {
@@ -26,6 +26,11 @@ class MyTextFormField extends StatelessWidget {
     return TextFormField(
       textAlign: TextAlign.start,
         controller: editingController,
+        style: GoogleFonts.alef (
+          textStyle: const TextStyle(
+            fontSize: AppValues.text_height_18
+          )
+        ) ,
         onChanged: onPressed,
         validator: (value) {
           if (value == null || value.isEmpty) {

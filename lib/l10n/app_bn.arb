@@ -1,3 +1,11 @@
 {
-    "homeAppBarTitle": "হোম"
+  "bottomNavHome": "হোম",
+  "homeAppBarTitle": "হোম",
+  "bottomNavFavorite": "ফেভারিট",
+  "bottomNavCart": "কার্ট",
+  "bottomNavSettings": "সেটিংস",
+  "titleOtherView": "অন্যান্য",
+  "settingsTheme": "থিম",
+  "settingsLanguage": "ভাষা",
+  "settingsFontSize": "অক্ষরের আকার"
 }

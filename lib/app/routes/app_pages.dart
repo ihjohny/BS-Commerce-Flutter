@@ -1,3 +1,5 @@
+import 'package:bs_commerce/app/modules/main/bindings/main_binding.dart';
+import 'package:bs_commerce/app/modules/main/views/main_view.dart';
 import 'package:bs_commerce/app/modules/product_details/bindings/product_details_binding.dart';
 import 'package:bs_commerce/app/modules/product_details/views/product_details_screen.dart';
 import 'package:get/get.dart';
@@ -13,9 +15,14 @@ part 'app_routes.dart';
 class AppPages {
   AppPages._();
 
-  static const INITIAL = Routes.SIGN_UP;
+  static const INITIAL = Routes.MAIN;
 
   static final routes = [
+    GetPage(
+      name: _Paths.MAIN,
+      page: () => MainView(),
+      binding: MainBinding(),
+    ),
     GetPage(
       name: _Paths.HOME,
       page: () => HomeView(),

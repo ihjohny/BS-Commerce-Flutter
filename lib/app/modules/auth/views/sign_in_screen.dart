@@ -56,9 +56,9 @@ class SignInScreen extends BaseView<AuthController> {
                 ),
                 AppValues.getVerticalSpace(AppValues.margin_20),
                 getUserNameView(),
-                AppValues.getVerticalSpace(AppValues.margin_10),
+                AppValues.getVerticalSpace(AppValues.margin_20),
                 getPasswordView(),
-                AppValues.getVerticalSpace(AppValues.margin_10),
+                AppValues.getVerticalSpace(AppValues.margin_20),
                 getMyAuthButton(),
                 AppValues.getVerticalSpace(AppValues.margin_10),
                 const Text(AppValues.forgotPassword),
@@ -137,7 +137,8 @@ class SignInScreen extends BaseView<AuthController> {
             },
             child: const Text(
               AppValues.signUp,
-              style: TextStyle(color: AppColors.colorBlack),
+              style: TextStyle(color: AppColors.colorBlack,fontSize: 16,decoration: TextDecoration.underline,fontWeight: FontWeight.bold),
+
             ))
       ],
     );

@@ -94,7 +94,7 @@ class SignUpScreen extends BaseView<AuthController> {
               AppValues.getHorizontalSpace(AppValues.margin_10),
               GestureDetector(onTap: (){
                 Get.offNamed(Routes.SIGN_IN);
-              }, child: const Text(AppValues.signIn,style: TextStyle(color: AppColors.colorBlack),))
+              }, child: const Text(AppValues.signIn,style: TextStyle(color: AppColors.colorBlack,fontSize: 16,decoration: TextDecoration.underline,fontWeight: FontWeight.bold),))
             ],
           )
         ],

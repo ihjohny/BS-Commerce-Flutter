@@ -26,6 +26,7 @@ dependencies:
   fluttertoast: ^8.0.8
   customizable_counter: ^1.0.4
   auth_buttons: ^1.0.0
+  google_fonts: ^3.0.1
 
 
 

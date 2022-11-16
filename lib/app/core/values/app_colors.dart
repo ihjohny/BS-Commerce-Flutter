@@ -3,9 +3,9 @@ import 'package:flutter/material.dart';
 abstract class AppColors {
   static const Color pageBackground = Color(0xFFFAFBFD);
   static const Color statusBarColor = Color(0xFF0C0C0C);
-  static const Color appBarColor = Color(0xBB0C0C0C);
+  static const Color appBarColor = Colors.white;
   static const Color appBarIconColor = Color(0xFFFFFFFF);
-  static const Color appBarTextColor = Color(0xFFFFFFFF);
+  static const Color appBarTextColor = Color(0xFF0C0C0C);
 
   static const Color centerTextColor = Colors.grey;
   static const MaterialColor colorPrimarySwatch = Colors.cyan;

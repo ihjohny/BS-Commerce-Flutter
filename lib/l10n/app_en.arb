@@ -1,3 +1,11 @@
 {
-  "homeAppBarTitle": "BS Commerce"
+  "bottomNavHome": "Home",
+  "homeAppBarTitle": "Home",
+  "bottomNavCart": "Cart",
+  "bottomNavFavorite": "Favorite",
+  "bottomNavSettings": "Settings",
+  "titleOtherView": "OtherView",
+  "settingsTheme": "Theme",
+  "settingsLanguage": "Language",
+  "settingsFontSize": "Font Size"
 }

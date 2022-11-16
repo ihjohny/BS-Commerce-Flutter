@@ -12,7 +12,7 @@ class RemoteSourceBindings implements Bindings {
   void dependencies() {
     Get.lazyPut<HomeRemoteDataSource>(
       () => HomeRemoteDataSourceImpl(),
-      tag: (HomeRemoteDataSource).toString(),
+      tag: (HomeRemoteDataSource).toString(),fenix: true
     );
 
     Get.lazyPut<ProductDetailsRemoteDataSource>(
