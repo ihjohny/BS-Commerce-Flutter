@@ -30,13 +30,10 @@ class ProductDetailsRemoteDataSourceImpl extends BaseRemoteSource
 
   @override
   Future addToCart(String productId, int quantity)async {
-    String token= await _preferenceManager.getString(AppValues.AUTH_TOKEN);
-    debugPrint(token);
     var endpoint = "${DioProvider.baseUrl}api/cart";
     var dioCall = dioClient
         .post(endpoint, data: {"productId": productId, "quantity": quantity});
 
-    return callApiWithErrorParser(dioCall)
-        .then((response) => debugPrint(response.data.toString()));
+    return callApiWithErrorParser(dioCall);
   }
 }

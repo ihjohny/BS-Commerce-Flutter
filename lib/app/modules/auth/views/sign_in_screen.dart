@@ -79,8 +79,10 @@ class SignInScreen extends BaseView<AuthController> {
         onPressed: (value) {
           if (value.isNotEmpty) {
             controller.userNameEditTextState.value = true;
+            controller.isSignInButtonEnable.value = checkAuthButtonStatus();
           } else {
             controller.userNameEditTextState.value = false;
+            controller.isSignInButtonEnable.value = checkAuthButtonStatus();
           }
         },
         editingController: userNameController,
@@ -96,8 +98,10 @@ class SignInScreen extends BaseView<AuthController> {
         onPressed: (value) {
           if (value.isNotEmpty) {
             controller.passwordSignInEditTextState.value = true;
+            controller.isSignInButtonEnable.value = checkAuthButtonStatus();
           } else {
             controller.passwordSignInEditTextState.value = false;
+            controller.isSignInButtonEnable.value = checkAuthButtonStatus();
           }
         },
         prefixIcon: Icon(
@@ -121,7 +125,9 @@ class SignInScreen extends BaseView<AuthController> {
           },
         ));
   }
-
+bool checkAuthButtonStatus(){
+    return (passwordController.text.isNotEmpty && userNameController.text.isNotEmpty);
+}
   Row getDontHaveAccountView() {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -152,6 +158,7 @@ class SignInScreen extends BaseView<AuthController> {
           makeSignIn(userNameController.text, passwordController.text);
         }
       },
+      isEnableButton: controller.isSignInButtonEnable.value,
       buttonText: AppValues.signIn,
     );
   }

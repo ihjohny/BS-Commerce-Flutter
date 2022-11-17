@@ -1,3 +1,4 @@
+import 'package:bs_commerce/app/modules/cart/bindings/cart_bindings.dart';
 import 'package:bs_commerce/app/modules/product_details/bindings/product_details_binding.dart';
 import 'package:get/get.dart';
 
@@ -14,5 +15,6 @@ class InitialBinding implements Bindings {
     LocalSourceBindings().dependencies();
     ProductDetailsBinding().dependencies();
     AuthBindings().dependencies();
+    CartBindings().dependencies();
   }
 }

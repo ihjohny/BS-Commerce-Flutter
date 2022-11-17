@@ -1,5 +1,4 @@
 import 'package:bs_commerce/app/core/base/base_view.dart';
-import 'package:bs_commerce/app/core/widget/custom_app_bar.dart';
 import 'package:bs_commerce/app/modules/auth/components/my_auth_button.dart';
 import 'package:bs_commerce/app/modules/auth/controllers/auth_controller.dart';
 import 'package:bs_commerce/app/routes/app_pages.dart';
@@ -101,7 +100,9 @@ class SignUpScreen extends BaseView<AuthController> {
       ),
     );
   }
-
+  bool checkAuthButtonStatus(){
+    return (passwordControllerET.text.isNotEmpty && numberControllerET.text.isNotEmpty);
+  }
   Column getNameAndPasswordView() {
     return Column(
       children: [
@@ -118,6 +119,7 @@ class SignUpScreen extends BaseView<AuthController> {
                     otpControllerET.text);
               }
             },
+            isEnableButton: controller.isSignUpButtonEnable.value,
             buttonText: AppValues.signUp),
         AppValues.getVerticalSpace(AppValues.margin_10),
         const AuthenticationFooter(),
@@ -132,8 +134,10 @@ class SignUpScreen extends BaseView<AuthController> {
           onPressed: (value) {
             if (value.isNotEmpty) {
               controller.nameEditTextState.value = true;
+              controller.isSignUpButtonEnable.value=checkAuthButtonStatus();
             } else {
               controller.nameEditTextState.value = false;
+              controller.isSignUpButtonEnable.value=checkAuthButtonStatus();
             }
           },
           editingController: nameControllerET,
@@ -153,8 +157,10 @@ class SignUpScreen extends BaseView<AuthController> {
           onPressed: (value) {
             if (value.isNotEmpty) {
               controller.passwordEditTextState.value = true;
+              controller.isSignUpButtonEnable.value=checkAuthButtonStatus();
             } else {
               controller.passwordEditTextState.value = false;
+              controller.isSignUpButtonEnable.value=checkAuthButtonStatus();
             }
           },
           prefixIcon: Icon(
@@ -264,61 +270,3 @@ class SignUpScreen extends BaseView<AuthController> {
     otpControllerET.dispose();
   }
 }
-
-// class MyAuthButton extends StatelessWidget {
-//   const MyAuthButton({
-//     Key? key,
-//     required GlobalKey<FormState> formNameKey,
-//     required GlobalKey<FormState> formNumberKey,
-//     required this.controller,
-//     required this.nameControllerET,
-//     required this.numberControllerET,
-//     required this.passwordControllerET,
-//     required this.otpControllerET,
-//   }) : _formNameKey = formNameKey, _formNumberKey = formNumberKey, super(key: key);
-//
-//   final GlobalKey<FormState> _formNameKey;
-//   final GlobalKey<FormState> _formNumberKey;
-//   final AuthController controller;
-//   final TextEditingController nameControllerET;
-//   final TextEditingController numberControllerET;
-//   final TextEditingController passwordControllerET;
-//   final TextEditingController otpControllerET;
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return TextButton(
-//       style: ButtonStyle(
-//           backgroundColor: MaterialStateProperty.all(Colors.black),
-//           shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-//               RoundedRectangleBorder(
-//             borderRadius: BorderRadius.circular(AppValues.extraLargeRadius100),
-//           ))),
-//       onPressed: () {
-//         if (_formNameKey.currentState!.validate() ||
-//             _formNumberKey.currentState!.validate()) {
-//           controller
-//               .registerUser(nameControllerET.text, numberControllerET.text,
-//                   passwordControllerET.text, otpControllerET.text)
-//               .then((value) {
-//             if (value.code == 200) {
-//               Get.to(SignInScreen());
-//             }
-//           });
-//         }
-//       },
-//       child: Row(
-//         mainAxisAlignment: MainAxisAlignment.center,
-//         children: const [
-//           Padding(
-//             padding: EdgeInsets.all(8.0),
-//             child: Text(
-//               "Sign Up",
-//               style: TextStyle(color: AppColors.colorWhite),
-//             ),
-//           ),
-//         ],
-//       ),
-//     );
-//   }
-// }

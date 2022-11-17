@@ -21,6 +21,8 @@ class AuthController extends BaseController {
   Rx<bool> userNameEditTextState = Rx(false);
   Rx<bool> passwordSignInEditTextState = Rx(false);
   Rx<bool> namePasswordState = Rx(false);
+  Rx<bool> isSignUpButtonEnable = Rx(false);
+  Rx<bool> isSignInButtonEnable = Rx(false);
 
   Future<dynamic> sendOTP(String numberOrEmail) async {
     return callDataService(_repository.sendOTP(numberOrEmail),

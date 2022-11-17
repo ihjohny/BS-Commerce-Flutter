@@ -4,6 +4,7 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '../../cart/views/cart_screen.dart';
 import '/app/core/base/base_view.dart';
 import '/app/modules/home/views/home_view.dart';
 import '/app/modules/main/controllers/main_controller.dart';
@@ -33,27 +34,20 @@ class MainView extends BaseView<MainController> {
   final HomeView homeView = HomeView();
   SignUpScreen? signUpScreen;
   SignInScreen? signInScreen;
+  CartScreen? cartScreen;
 
   Widget getPageOnSelectedMenu(MenuCode menuCode) {
     switch (menuCode) {
       case MenuCode.HOME:
         return homeView;
       case MenuCode.CART:
-        signUpScreen ??= SignUpScreen();
-        return signUpScreen!;
+        cartScreen ??= CartScreen();
+        return cartScreen!;
       case MenuCode.SETTINGS:
         signInScreen ??= SignInScreen();
         return signInScreen!;
       default:
         return homeView;
-
-      // case MenuCode.SETTINGS:
-      //   settingsView ??= SettingsView();
-      //   return settingsView!;
-      // default:
-      //   return OtherView(
-      //     viewParam: describeEnum(menuCode),
-      //   );
     }
   }
 }

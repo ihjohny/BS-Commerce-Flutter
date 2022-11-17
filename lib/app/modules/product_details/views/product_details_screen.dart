@@ -1,8 +1,10 @@
 import 'package:bs_commerce/app/core/values/app_colors.dart';
 import 'package:bs_commerce/app/core/values/app_values.dart';
 import 'package:bs_commerce/app/modules/product_details/controllers/product_details_controller.dart';
+import 'package:customizable_counter/customizable_counter.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import '../../../core/utils/utils.dart';
 import '/app/core/base/base_view.dart';
 import 'components/item_name_component.dart';
 import 'components/quantity_row_view.dart';
@@ -10,6 +12,7 @@ import 'components/quantity_row_view.dart';
 class ProductDetailsScreen extends BaseView<ProductDetailsController> {
   ProductDetailsScreen() {
     controller.getProductDetails(Get.arguments.toString());
+    controller.count.value = 0;
   }
 
   @override
@@ -35,17 +38,10 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
               child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(
-                      width: MediaQuery.of(context).size.width,
-                      child: Material(
-                        elevation: AppValues.elevation_half,
-                        child: Image.network(
-                            controller.data?.value?.data?.photos?[0].url ?? "",
-                            fit: BoxFit.fill),
-                      ),
-                    ),
+                    getImageView(context),
                     Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 15.0,vertical: 10),
+                      padding: const EdgeInsets.symmetric(
+                          horizontal: 15.0, vertical: 10),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
@@ -61,7 +57,12 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
                                   .data?.value?.data?.info?.shortDescription ??
                               ""),
                           AppValues.getVerticalSpace(AppValues.minimumSpacing),
-                          const QuantityRowView(),
+                          QuantityRowView(
+                            initialValue: controller.count.value,
+                            function: (value) {
+                              controller.count.value = value;
+                            }
+                          ),
                           AppValues.getVerticalSpace(AppValues.minimumSpacing),
                           const Divider(),
                           AppValues.getVerticalSpace(AppValues.minimumSpacing),
@@ -74,7 +75,17 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
         : const SizedBox();
   }
 
-  
+  SizedBox getImageView(BuildContext context) {
+    return SizedBox(
+                    width: MediaQuery.of(context).size.width,
+                    child: Material(
+                      elevation: AppValues.elevation_half,
+                      child: Image.network(
+                          controller.data?.value?.data?.photos?[0].url ?? "",
+                          fit: BoxFit.fill),
+                    ),
+                  );
+  }
 
   Widget getAddToCartView(BuildContext context) {
     return Row(
@@ -93,18 +104,15 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
             )
           ],
         ),
-       AppValues.getHorizontalSpace(AppValues.margin_15),
+        AppValues.getHorizontalSpace(AppValues.margin_15),
         TextButton(
-          style: ButtonStyle(
-              backgroundColor: MaterialStateProperty.all(Colors.black),
-              shape: MaterialStateProperty.all<RoundedRectangleBorder>(
-                  RoundedRectangleBorder(
-                borderRadius:
-                    BorderRadius.circular(AppValues.extraLargeRadius100),
-              ))),
-          onPressed: () {
-            controller.addToCart(controller.data?.value?.data?.id??"", 1);
-          },
+          style: getButtonStyle(true, controller.count.value != 0.0),
+          onPressed: controller.count.value != 0.0
+              ? () {
+                  controller.addToCart(controller.data?.value?.data?.id ?? "",
+                      controller.count.value);
+                }
+              : null,
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 30),
             child: Row(
@@ -126,4 +134,3 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
     );
   }
 }
-
