@@ -1,6 +1,7 @@
 {
   "bottomNavHome": "হোম",
   "homeAppBarTitle": "হোম",
+  "homeCartBarTitle": "আমার কার্ট",
   "bottomNavFavorite": "ফেভারিট",
   "bottomNavCart": "কার্ট",
   "bottomNavSettings": "সেটিংস",

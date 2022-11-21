@@ -1,17 +1,14 @@
-class AddToCartResponse {
-  int? code;
+class CartResponse {
   Data? data;
 
-  AddToCartResponse({this.code, this.data});
+  CartResponse({this.data});
 
-  AddToCartResponse.fromJson(Map<String, dynamic> json) {
-    code = json['code'];
+  CartResponse.fromJson(Map<String, dynamic> json) {
     data = json['data'] != null ? Data.fromJson(json['data']) : null;
   }
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['code'] = code;
     if (this.data != null) {
       data['data'] = this.data!.toJson();
     }
@@ -79,17 +76,15 @@ class Items {
 class Product {
   String? id;
   Info? info;
-  Meta? meta;
-  Photos? photos;
+  String? photoUrl;
 
-  Product({this.id, this.info, this.meta, this.photos});
+  Product({this.id, this.info, this.photoUrl});
 
   Product.fromJson(Map<String, dynamic> json) {
     id = json['id'];
     info = json['info'] != null ? Info.fromJson(json['info']) : null;
-    meta = json['meta'] != null ? Meta.fromJson(json['meta']) : null;
-    photos =
-    json['photos'] != null ? Photos.fromJson(json['photos']) : null;
+    photoUrl = json['photos'] != null ? json['photos'][0]["url"]  : null;
+
   }
 
   Map<String, dynamic> toJson() {
@@ -97,12 +92,6 @@ class Product {
     data['id'] = id;
     if (info != null) {
       data['info'] = info!.toJson();
-    }
-    if (meta != null) {
-      data['meta'] = meta!.toJson();
-    }
-    if (photos != null) {
-      data['photos'] = photos!.toJson();
     }
 
     return data;
@@ -159,7 +148,7 @@ class Info {
   }
 
   Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
+    final Map<String, dynamic> data = <String, dynamic>{};
     data['name'] = name;
     data['shortDescription'] = shortDescription;
     data['fullDescription'] = fullDescription;
@@ -174,49 +163,6 @@ class Info {
     data['displayOrder'] = displayOrder;
     data['isFeatured'] = isFeatured;
     data['publishDate'] = publishDate;
-
-    return data;
-  }
-}
-
-class Meta {
-  String? friendlyPageName;
-
-  Meta({this.friendlyPageName});
-
-  Meta.fromJson(Map<String, dynamic> json) {
-    friendlyPageName = json['friendlyPageName'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['friendlyPageName'] = this.friendlyPageName;
-
-    return data;
-  }
-}
-
-class Photos {
-  String? url;
-  String? title;
-  String? alt;
-  int? displayOrder;
-
-  Photos({this.url, this.title, this.alt, this.displayOrder});
-
-  Photos.fromJson(Map<String, dynamic> json) {
-    url = json['url'];
-    title = json['title'];
-    alt = json['alt'];
-    displayOrder = json['displayOrder'];
-  }
-
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = <String, dynamic>{};
-    data['url'] = url;
-    data['title'] = title;
-    data['alt'] = alt;
-    data['displayOrder'] = displayOrder;
 
     return data;
   }

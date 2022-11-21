@@ -1,11 +1,8 @@
 
-import 'package:bs_commerce/app/data/network/repository/product_details/product_details_repository.dart';
-import 'package:bs_commerce/app/modules/product_details/model/add_to_cart_response.dart';
+import 'package:bs_commerce/app/modules/product_details/model/cart_response.dart';
 import 'package:get/get.dart';
 
-import '../../model/product_details/response.dart';
 import '../../remote/cart/cart_remote_data_source.dart';
-import '../../remote/product_details/product_details_remote_data_source.dart';
 import 'cart_repository.dart';
 
 class CartRepositoryImpl implements CartRepository {
@@ -18,7 +15,7 @@ class CartRepositoryImpl implements CartRepository {
   }
 
   @override
-  Future getCart() {
+  Future<CartResponse> getCart() {
     return _remoteSource.getCart();
   }
 }

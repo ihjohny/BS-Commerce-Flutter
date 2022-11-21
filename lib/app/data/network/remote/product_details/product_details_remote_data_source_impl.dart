@@ -1,9 +1,7 @@
 import 'package:bs_commerce/app/data/network/remote/product_details/product_details_remote_data_source.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/get_instance.dart';
-import '../../../../core/values/app_values.dart';
 import '../../../../network/dio_provider.dart';
 import '../../../local/preference/preference_manager.dart';
 import '../../model/product_details/response.dart';

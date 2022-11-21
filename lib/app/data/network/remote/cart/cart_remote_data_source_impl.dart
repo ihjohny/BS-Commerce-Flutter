@@ -1,17 +1,12 @@
+import 'package:bs_commerce/app/modules/product_details/model/cart_response.dart';
+import 'package:dio/dio.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:get/get_core/src/get_main.dart';
-import 'package:get/get_instance/get_instance.dart';
-
-import '../../../../core/values/app_values.dart';
 import '../../../../network/dio_provider.dart';
-import '../../../local/preference/preference_manager.dart';
 import '/app/core/base/base_remote_source.dart';
 import 'cart_remote_data_source.dart';
 
 class CartRemoteDataSourceImpl extends BaseRemoteSource
     implements CartRemoteDataSource {
-  final PreferenceManager _preferenceManager =
-  Get.find(tag: (PreferenceManager).toString());
   @override
   Future addToCart(String productId, int quantity) async{
     var endpoint = "${DioProvider.baseUrl}api/cart";
@@ -23,13 +18,18 @@ class CartRemoteDataSourceImpl extends BaseRemoteSource
   }
 
   @override
-  Future getCart() {
+  Future<CartResponse> getCart() {
     var endpoint = "${DioProvider.baseUrl}api/cart";
     var dioCall = dioClient
         .get(endpoint);
 
     return callApiWithErrorParser(dioCall)
-        .then((response) => debugPrint(response.data.toString()));
+        .then((response)=>_parseCartResponse(response));
   }
+  CartResponse _parseCartResponse(
+      Response<dynamic> response) {
+    debugPrint("Shahin"+response.data.toString());
 
+    return CartResponse.fromJson(response.data);
+  }
 }

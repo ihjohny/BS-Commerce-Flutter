@@ -1,6 +1,5 @@
 
 import 'package:bs_commerce/app/data/network/repository/product_details/product_details_repository.dart';
-import 'package:bs_commerce/app/modules/product_details/model/add_to_cart_response.dart';
 import 'package:get/get.dart';
 
 import '../../model/product_details/response.dart';
