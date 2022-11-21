@@ -13,9 +13,4 @@ class ProductDetailsRepositoryImpl implements ProductDetailsRepository {
   Future<ProductDetailsResponse> getProductDetails(String productId) {
     return _remoteSource.getProductDetails(productId);
   }
-
-  @override
-  Future addToCart(String productId, int quantity) {
-    return _remoteSource.addToCart(productId, quantity);
-  }
 }

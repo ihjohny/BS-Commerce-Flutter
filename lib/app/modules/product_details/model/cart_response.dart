@@ -18,15 +18,11 @@ class CartResponse {
 }
 
 class Data {
-  String? id;
-  String? userId;
   List<Items>? items;
 
-  Data({this.id, this.userId, this.items});
+  Data({this.items});
 
   Data.fromJson(Map<String, dynamic> json) {
-    id = json['id'];
-    userId = json['userId'];
     if (json['items'] != null) {
       items = <Items>[];
       json['items'].forEach((v) {
@@ -37,8 +33,6 @@ class Data {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = <String, dynamic>{};
-    data['id'] = id;
-    data['userId'] = userId;
     if (items != null) {
       data['items'] = items!.map((v) => v.toJson()).toList();
     }

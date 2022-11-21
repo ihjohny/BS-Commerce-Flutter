@@ -26,12 +26,5 @@ class ProductDetailsRemoteDataSourceImpl extends BaseRemoteSource
     return ProductDetailsResponse.fromJson(response.data);
   }
 
-  @override
-  Future addToCart(String productId, int quantity)async {
-    var endpoint = "${DioProvider.baseUrl}api/cart";
-    var dioCall = dioClient
-        .post(endpoint, data: {"productId": productId, "quantity": quantity});
 
-    return callApiWithErrorParser(dioCall);
-  }
 }

@@ -8,13 +8,13 @@ import 'cart_remote_data_source.dart';
 class CartRemoteDataSourceImpl extends BaseRemoteSource
     implements CartRemoteDataSource {
   @override
-  Future addToCart(String productId, int quantity) async{
+  Future<CartResponse> addToCart(String productId, int quantity) async{
     var endpoint = "${DioProvider.baseUrl}api/cart";
     var dioCall = dioClient
         .post(endpoint, data: {"productId": productId, "quantity": quantity});
 
     return callApiWithErrorParser(dioCall)
-        .then((response) => debugPrint(response.data.toString()));
+        .then((response)=>_parseCartResponse(response));
   }
 
   @override

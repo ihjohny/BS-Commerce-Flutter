@@ -42,17 +42,11 @@ CartScreen(){
   }
 
   Widget _getView() {
-    return  controller.data?.value?.data?.items?.length!=0?ListView.separated(itemBuilder: (context,index){
-      return CartComponentCard(cartComponentModel: CartComponentModel(
-        productCount: controller.data?.value?.data?.items?[index].quantity.toString()??"",
-        productId: controller.data?.value?.data?.items?[index].productId.toString()??"" ,
-        productImageUrl:  controller.data?.value?.data?.items?[index].product?.photoUrl??"",
-        productName:  controller.data?.value?.data?.items?[index].product?.info?.name.toString()??"",
-        productPrice: controller.data?.value?.data?.items?[index].product?.info?.price.toString()??""
-      ),
+    return  controller.data?.value.length!=0?ListView.separated(itemBuilder: (context,index){
+      return CartComponentCard(cartComponentModel: controller.data!.value[index]!,
       );
     }, separatorBuilder: (context,index){
-      return Divider();
-    }, itemCount: controller.data?.value?.data?.items?.length??0):const Center(child: Text("No Data Found"),);
+      return const Divider();
+    }, itemCount: controller.data?.value.length??0):const Center(child: Text("No Data Found"),);
   }
 }

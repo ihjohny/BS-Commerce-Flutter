@@ -1,7 +1,9 @@
-import 'package:bs_commerce/app/modules/product_details/model/cart_response.dart';
+import 'package:bs_commerce/app/modules/auth/model/cart_component_model.dart';
 
 class UiData {
-  final CartResponse? value;
+  final List<CartComponentModel?> value;
+  final String totalPrice;
+  final String totalQuantity;
 
-  UiData(this.value);
+  UiData(this.value,this.totalPrice,this.totalQuantity);
 }
