@@ -23,9 +23,24 @@ BoxDecoration getCardStyle() {
 }
 
 TextStyle getTitleTextStyle() {
-  return  const TextStyle(
+  return const TextStyle(
     color: AppColors.colorBlack,
     fontSize: 18,
     fontWeight: FontWeight.bold,
+  );
+}
+
+TextStyle getTitleTextStyleWhite() {
+  return const TextStyle(
+    color: AppColors.colorWhite,
+    fontSize: 18,
+    fontWeight: FontWeight.bold,
+  );
+}
+
+SizedBox Space({double width = 0, double height = 0}) {
+  return SizedBox(
+    width: width,
+    height: height,
   );
 }

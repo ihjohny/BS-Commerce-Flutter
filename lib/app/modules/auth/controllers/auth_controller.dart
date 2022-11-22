@@ -1,5 +1,8 @@
 import 'package:bs_commerce/app/core/base/base_controller.dart';
+import 'package:bs_commerce/app/core/model/page_state.dart';
 import 'package:bs_commerce/app/data/local/preference/preference_manager.dart';
+import 'package:bs_commerce/app/modules/main/controllers/bottom_nav_controller.dart';
+import 'package:bs_commerce/app/modules/main/controllers/main_controller.dart';
 import 'package:bs_commerce/app/routes/app_pages.dart';
 import 'package:get/get.dart';
 
@@ -60,7 +63,7 @@ class AuthController extends BaseController {
               .then((value) {
             if (value) {
               Get.snackbar(AppValues.tokenSaveSuccessfully, message);
-              Get.offNamed(Routes.HOME);
+              Get.to(Routes.MAIN);
             }
           });
         }), onError: (errorMessage) {

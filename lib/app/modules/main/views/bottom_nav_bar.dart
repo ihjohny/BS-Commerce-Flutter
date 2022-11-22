@@ -29,23 +29,23 @@ class BottomNavBar extends StatelessWidget {
     List<BottomNavItem> navItems = _getNavItems();
 
     return Obx(
-          () => BottomNavigationBar(
+      () => BottomNavigationBar(
         key: bottomNavKey,
         items: navItems
             .map(
               (BottomNavItem navItem) => BottomNavigationBarItem(
-              icon: SvgPicture.asset(
-                "images/${navItem.iconSvgName}",
-                height: AppValues.iconDefaultSize,
-                width: AppValues.iconDefaultSize,
-                color:
-                navItems.indexOf(navItem) == navController.selectedIndex
-                    ? selectedItemColor
-                    : unselectedItemColor,
-              ),
-              label: navItem.navTitle,
-              tooltip: ""),
-        )
+                  icon: SvgPicture.asset(
+                    "images/${navItem.iconSvgName}",
+                    height: AppValues.iconDefaultSize,
+                    width: AppValues.iconDefaultSize,
+                    color:
+                        navItems.indexOf(navItem) == navController.selectedIndex
+                            ? selectedItemColor
+                            : unselectedItemColor,
+                  ),
+                  label: navItem.navTitle,
+                  tooltip: ""),
+            )
             .toList(),
         showSelectedLabels: true,
         showUnselectedLabels: true,
@@ -74,9 +74,9 @@ class BottomNavBar extends StatelessWidget {
           iconSvgName: "shopping_cart.svg",
           menuCode: MenuCode.CART),
       BottomNavItem(
-          navTitle: appLocalization.bottomNavSettings,
-          iconSvgName: "ic_settings.svg",
-          menuCode: MenuCode.SETTINGS)
+          navTitle: appLocalization.bottomNavProfile,
+          iconSvgName: "profile.svg",
+          menuCode: MenuCode.AUTH)
     ];
   }
 }

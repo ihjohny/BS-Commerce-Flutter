@@ -1,1 +1,1 @@
-enum MenuCode { HOME, CART, SETTINGS }
+enum MenuCode { HOME, CART, SETTINGS, AUTH }

@@ -1,5 +1,4 @@
 import 'package:bs_commerce/app/core/values/app_values.dart';
-import 'package:bs_commerce/app/core/widget/paging_view.dart';
 import 'package:bs_commerce/app/modules/home/components/item_card.dart';
 import 'package:bs_commerce/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
@@ -12,6 +11,7 @@ import '/app/modules/home/controllers/home_controller.dart';
 class HomeView extends BaseView<HomeController> {
   HomeView() {
     controller.getHomePageProducts();
+    controller.getCart();
   }
 
   @override

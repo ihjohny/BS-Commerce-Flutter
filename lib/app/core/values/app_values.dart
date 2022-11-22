@@ -120,6 +120,7 @@ abstract class AppValues {
   static const String otp = "OTP";
   static const String signUp = "Sign Up";
   static const String signIn = "Sign In";
+  static const String checkOut = "Check Out";
   static const String alreadyHaveAnAccount = "Already have an account?";
   static const String dontHaveAnAccount = "Don't have an account?";
   static const String error = "Error";

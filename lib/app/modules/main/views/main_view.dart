@@ -1,5 +1,7 @@
+import 'package:bs_commerce/app/core/values/app_values.dart';
 import 'package:bs_commerce/app/modules/auth/views/sign_in_screen.dart';
 import 'package:bs_commerce/app/modules/auth/views/sign_up_screen.dart';
+import 'package:bs_commerce/app/modules/home/components/bottom_checkout_view.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -39,15 +41,39 @@ class MainView extends BaseView<MainController> {
   Widget getPageOnSelectedMenu(MenuCode menuCode) {
     switch (menuCode) {
       case MenuCode.HOME:
-        return homeView;
+        return stackView(homeView);
       case MenuCode.CART:
         cartScreen ??= CartScreen();
-        return cartScreen!;
+        return stackView(cartScreen!);
       case MenuCode.SETTINGS:
+        signInScreen ??= SignInScreen();
+        return signInScreen!;
+      case MenuCode.AUTH:
         signInScreen ??= SignInScreen();
         return signInScreen!;
       default:
         return homeView;
     }
+  }
+
+  Widget stackView(Widget view) {
+    return Stack(
+      fit: StackFit.loose,
+      alignment: Alignment.bottomCenter,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(
+              bottom: controller.cartRepository.totalQuantity != 0
+                  ? AppValues.collapsedAppBarSize
+                  : 0),
+          child: view,
+        ),
+        Positioned(
+            child: controller.cartRepository.totalQuantity != 0
+                ? BottomCheckOutView(
+                    totalPrice: controller.cartRepository.totalPrice.toString())
+                : SizedBox())
+      ],
+    );
   }
 }

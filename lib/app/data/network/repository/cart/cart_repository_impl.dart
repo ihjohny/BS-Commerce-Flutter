@@ -1,4 +1,3 @@
-
 import 'package:bs_commerce/app/modules/product_details/model/cart_response.dart';
 import 'package:get/get.dart';
 
@@ -18,41 +17,40 @@ class CartRepositoryImpl implements CartRepository {
 
   @override
   Future<CartResponse> addToCart(String productId, int quantity) {
-    return _remoteSource.addToCart(productId, quantity).then((value){
+    return _remoteSource.addToCart(productId, quantity).then((value) {
       cartComponentCardList.clear();
-      value.data?.items?.forEach((element) {
-        makeCalculation( element.product?.info?.price, element.quantity);
-        cartComponentCardList.add(CartComponentModel(
-            productPrice: element.product?.info?.price.toString()??"",
-            productName: element.product?.info?.name.toString()??"",
-            productImageUrl: element.product?.photoUrl.toString()??"",
-            productId: element.product?.id.toString()??"",
-            productCount:  element.quantity.toString()??""
-        ));
-      });
+      totalPrice.value = 0;
+      totalQuantity.value = 0;
+      mappingCartResponse(value);
 
       return value;
+    });
+  }
+
+  void mappingCartResponse(CartResponse value) {
+    value.data?.items?.forEach((element) {
+      makeCalculation(element.product?.info?.price, element.quantity);
+      cartComponentCardList.add(CartComponentModel(
+          productPrice: element.product?.info?.price.toString() ?? "",
+          productName: element.product?.info?.name.toString() ?? "",
+          productImageUrl: element.product?.photoUrl.toString() ?? "",
+          productId: element.product?.id.toString() ?? "",
+          productCount: element.quantity.toString() ?? ""));
     });
   }
 
   @override
   Future<CartResponse> getCart() {
-    return _remoteSource.getCart().then((value){
+    return _remoteSource.getCart().then((value) {
       cartComponentCardList.clear();
-      value.data?.items?.forEach((element) {
-        makeCalculation( element.product?.info?.price, element.quantity);
-        cartComponentCardList.add(CartComponentModel(
-            productPrice: element.product?.info?.price.toString()??"",
-            productName: element.product?.info?.name.toString()??"",
-            productImageUrl: element.product?.photoUrl.toString()??"",
-            productId: element.product?.id.toString()??"",
-            productCount:  element.quantity.toString()??""
-        ));
-      });
+      totalPrice.value = 0;
+      totalQuantity.value = 0;
+      mappingCartResponse(value);
 
       return value;
     });
   }
+
   void makeCalculation(int? price, int? quantity) {
     totalPrice.value = totalPrice.value + price!;
     totalQuantity.value = totalQuantity.value + quantity!;
