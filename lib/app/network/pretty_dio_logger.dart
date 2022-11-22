@@ -118,7 +118,6 @@ class PrettyDioLogger extends Interceptor {
           .forEach((k, list) => responseHeaders[k] = list.toString());
       _printMapAsTable(responseHeaders, header: 'Headers');
     }
-    //_printResponse(response);
 
     if (responseBody) {
       logPrint('╔ Body');

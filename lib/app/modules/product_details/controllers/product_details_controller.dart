@@ -29,7 +29,6 @@ class ProductDetailsController extends BaseController {
 
   addToCart(String productId, double quantity)async {
     _preferenceManager.getString(AppValues.AUTH_TOKEN).then((value){
-      hideLoading();
       if(value.isNotEmpty){
         callDataService(_cartRepository.addToCart(productId, quantity.toInt()));
       }else{

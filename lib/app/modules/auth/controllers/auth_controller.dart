@@ -4,10 +4,12 @@ import 'package:bs_commerce/app/data/local/preference/preference_manager.dart';
 import 'package:bs_commerce/app/modules/main/controllers/bottom_nav_controller.dart';
 import 'package:bs_commerce/app/modules/main/controllers/main_controller.dart';
 import 'package:bs_commerce/app/routes/app_pages.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../core/values/app_values.dart';
 import '../../../data/network/repository/auth/auth_repo.dart';
+import '../../main/views/main_view.dart';
 import '../model/user.dart';
 import '../views/sign_in_screen.dart';
 
@@ -48,7 +50,7 @@ class AuthController extends BaseController {
             .then((value) {
           Get.snackbar(value.data!.message.toString(), "");
           if (value.code == AppValues.status_code_201) {
-            Get.off(SignInScreen());
+            Get.to(SignInScreen());
           }
         }), onError: (errorMessage) {
       Get.snackbar(AppValues.error, errorMessage.toString());
@@ -63,7 +65,7 @@ class AuthController extends BaseController {
               .then((value) {
             if (value) {
               Get.snackbar(AppValues.tokenSaveSuccessfully, message);
-              Get.to(Routes.MAIN);
+              Get.off(MainView());
             }
           });
         }), onError: (errorMessage) {
