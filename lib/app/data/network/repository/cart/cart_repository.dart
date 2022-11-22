@@ -8,5 +8,7 @@ abstract class CartRepository {
   abstract final RxInt totalQuantity;
   abstract RxList<CartComponentModel?> cartComponentCardList;
   Future<CartResponse> addToCart(String productId, int quantity);
+  Future<CartResponse> updateProduct(String productId, int quantity);
+  Future<CartResponse> deleteProduct(String productId);
   Future<CartResponse> getCart();
 }

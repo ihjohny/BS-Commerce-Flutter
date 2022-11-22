@@ -52,7 +52,32 @@ class CartRepositoryImpl implements CartRepository {
   }
 
   void makeCalculation(int? price, int? quantity) {
-    totalPrice.value = totalPrice.value + price!;
+    totalPrice.value = totalPrice.value + price! * quantity!;
     totalQuantity.value = totalQuantity.value + quantity!;
+  }
+
+  @override
+  Future<CartResponse> deleteProduct(String productId) {
+    return _remoteSource.deleteProduct(productId).then((value) {
+      cartComponentCardList.clear();
+      totalPrice.value = 0;
+      totalQuantity.value = 0;
+      mappingCartResponse(value);
+
+      return value;
+    });
+  }
+
+  @override
+  Future<CartResponse> updateProduct(
+      String productId, int quantity) {
+    return _remoteSource.updateProduct(productId, quantity).then((value) {
+      cartComponentCardList.clear();
+      totalPrice.value = 0;
+      totalQuantity.value = 0;
+      mappingCartResponse(value);
+
+      return value;
+    });
   }
 }

@@ -29,6 +29,12 @@ class CartController extends BaseController {
   getCart() {
     callDataService(_cartRepository.getCart(), onSuccess: _handleDataResponse);
   }
+  updateCart(String productId, int quantity) {
+    callDataService(_cartRepository.updateProduct(productId, quantity), onSuccess: _handleDataResponse);
+  }
+  deleteProduct(String productId){
+    callDataService(_cartRepository.deleteProduct(productId), onSuccess: _handleDataResponse);
+  }
 
   _handleDataResponse(CartResponse data) {
     _data(UiData(

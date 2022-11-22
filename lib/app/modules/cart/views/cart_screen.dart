@@ -12,8 +12,29 @@ class CartScreen extends BaseView<CartController> {
   @override
   PreferredSizeWidget? appBar(BuildContext context) {
     return CustomAppBar(
-      appBarTitleText: appLocalization.homeCartBarTitle,
+      appBarTitleText: "",
       isBackButtonEnabled: false,
+      actions: [
+        Container(
+          color: AppColors.pageCartBackground,
+          width: Get.width,
+          child: Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Row(
+              mainAxisSize: MainAxisSize.max,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Icon(Icons.shopping_cart,color: AppColors.colorBlack,),
+                ),
+                Text(appLocalization.homeCartBarTitle,style: getTitleTextStyle(),),
+              ],
+            ),
+          ),
+        )
+      ],
     );
   }
   @override
@@ -41,6 +62,12 @@ class CartScreen extends BaseView<CartController> {
   Widget _getView() {
     return  controller.data?.value!=null?ListView.separated(itemBuilder: (context,index){
       return CartComponentCard(cartComponentModel: controller.data!.value[index]!,
+        onValueChanged: (value){
+        controller.updateCart(controller.data!.value[index]!.productId, value.toInt());
+        },
+        onValueDeleted: (){
+        controller.deleteProduct(controller.data!.value[index]!.productId);
+        },
       );
     }, separatorBuilder: (context,index){
       return const Divider();

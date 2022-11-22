@@ -28,8 +28,26 @@ class CartRemoteDataSourceImpl extends BaseRemoteSource
   }
   CartResponse _parseCartResponse(
       Response<dynamic> response) {
-    debugPrint("Shahin"+response.data.toString());
-
     return CartResponse.fromJson(response.data);
+  }
+
+  @override
+  Future<CartResponse> deleteProduct(String productId) {
+    var endpoint = "${DioProvider.baseUrl}api/cart/item";
+    var dioCall = dioClient
+        .delete(endpoint, queryParameters: {"productId": productId.toString()});
+
+    return callApiWithErrorParser(dioCall)
+        .then((response)=>_parseCartResponse(response));
+  }
+
+  @override
+  Future<CartResponse> updateProduct(String productId, int quantity) {
+    var endpoint = "${DioProvider.baseUrl}api/cart/item";
+    var dioCall = dioClient
+        .patch(endpoint, data: {"productId": productId, "quantity": quantity});
+
+    return callApiWithErrorParser(dioCall)
+        .then((response)=>_parseCartResponse(response));
   }
 }

@@ -41,7 +41,7 @@ class MainView extends BaseView<MainController> {
   Widget getPageOnSelectedMenu(MenuCode menuCode) {
     switch (menuCode) {
       case MenuCode.HOME:
-        return stackView(homeView);
+        return homeView;
       case MenuCode.CART:
         cartScreen ??= CartScreen();
         return stackView(cartScreen!);

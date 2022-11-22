@@ -5,8 +5,10 @@ import 'package:customizable_counter/customizable_counter.dart';
 import 'package:flutter/material.dart';
 
 class CartComponentCard extends StatelessWidget {
-  const CartComponentCard({Key? key,required this.cartComponentModel}) : super(key: key);
+  const CartComponentCard({Key? key,required this.cartComponentModel,required this.onValueChanged,required this.onValueDeleted}) : super(key: key);
   final CartComponentModel cartComponentModel;
+  final Function(double value) onValueChanged;
+  final Function() onValueDeleted;
 
   @override
   Widget build(BuildContext context) {
@@ -52,9 +54,7 @@ class CartComponentCard extends StatelessWidget {
                             flex: 1,
                             fit: FlexFit.tight,
                             child: IconButton(
-                                onPressed: () {
-                                  ///TODO
-                                },
+                                onPressed:onValueDeleted,
                                 icon: const Icon(Icons.delete)),
                           )
                         ],
@@ -69,6 +69,7 @@ class CartComponentCard extends StatelessWidget {
                               textWidthBasis: TextWidthBasis.parent),
                           CustomizableCounter(
                             count: double.tryParse(cartComponentModel.productCount)??0,
+                            onCountChange: onValueChanged,
                           ),
                         ],
                       ),
