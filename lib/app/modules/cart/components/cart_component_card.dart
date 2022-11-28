@@ -10,8 +10,10 @@ class CartComponentCard extends StatelessWidget {
       {Key? key,
       required this.cartComponentModel,
       required this.onValueChanged,
+      this.haveDeleteButton = false,
       required this.onValueDeleted})
       : super(key: key);
+  final bool haveDeleteButton;
   final CartComponentModel cartComponentModel;
   final Function(double value) onValueChanged;
   final Function() onValueDeleted;
@@ -45,6 +47,7 @@ class CartComponentCard extends StatelessWidget {
                   padding: const EdgeInsets.all(8.0),
                   child: Column(
                     mainAxisSize: MainAxisSize.min,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       Row(
                         children: [
@@ -56,20 +59,27 @@ class CartComponentCard extends StatelessWidget {
                                   maxLines: 1,
                                   style: getTitleTextStyle(),
                                   textWidthBasis: TextWidthBasis.parent)),
-                          Flexible(
-                            flex: 1,
-                            fit: FlexFit.tight,
-                            child: IconButton(
-                                onPressed: onValueDeleted,
-                                icon: const Icon(Icons.delete)),
-                          )
+                          haveDeleteButton
+                              ? const SizedBox()
+                              : Flexible(
+                                  flex: 1,
+                                  fit: FlexFit.tight,
+                                  child: IconButton(
+                                      onPressed: onValueDeleted,
+                                      icon: const Icon(Icons.delete)),
+                                )
                         ],
                       ),
+                      Space(height:  haveDeleteButton
+                          ? AppValues.margin_15:0),
                       Row(
                         children: [
-                          Text("${cartComponentModel.productPrice}\$ X ${cartComponentModel.productCount}"),
+                          Text(
+                              "${cartComponentModel.productPrice}\$ X ${cartComponentModel.productCount}"),
                         ],
                       ),
+                      Space(height:  haveDeleteButton
+                          ? AppValues.margin_15:0),
                       Row(
                         mainAxisSize: MainAxisSize.max,
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -77,7 +87,7 @@ class CartComponentCard extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Text(AppValues.totalPrice.substring(0,5)),
+                              Text(AppValues.totalPrice.substring(0, 5)),
                               Text(
                                   " ${int.tryParse(cartComponentModel.productPrice)! * int.tryParse(cartComponentModel.productCount)!}\$",
                                   textAlign: TextAlign.start,
@@ -86,15 +96,17 @@ class CartComponentCard extends StatelessWidget {
                                   textWidthBasis: TextWidthBasis.parent),
                             ],
                           ),
-                          CustomizableCounter(
-                            backgroundColor:AppColors.pageCartBackground ,
-                            borderColor: AppColors.pageCartBackground,
-                            borderRadius: AppValues.margin_100,
-                            count: double.tryParse(
-                                    cartComponentModel.productCount) ??
-                                0,
-                            onCountChange: onValueChanged,
-                          ),
+                          haveDeleteButton
+                              ?  CircleAvatar(child: Text(cartComponentModel.productCount,style: getSubTitleTextStyle()),backgroundColor: AppColors.pageCartBackground,)
+                              : CustomizableCounter(
+                                  backgroundColor: AppColors.pageCartBackground,
+                                  borderColor: AppColors.pageCartBackground,
+                                  borderRadius: AppValues.margin_100,
+                                  count: double.tryParse(
+                                          cartComponentModel.productCount) ??
+                                      0,
+                                  onCountChange: onValueChanged,
+                                ),
                         ],
                       ),
                     ],

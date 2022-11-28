@@ -5,11 +5,13 @@ import 'package:get/get.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/app_values.dart';
+import '../../auth/model/cart_component_model.dart';
 
 class BottomCheckOutView extends StatelessWidget {
   final String totalPrice;
+  final List<CartComponentModel?> cartComponentList;
 
-  const BottomCheckOutView({Key? key, required this.totalPrice})
+  const BottomCheckOutView( {Key? key, required this.totalPrice,required this.cartComponentList})
       : super(key: key);
 
   @override
@@ -43,18 +45,21 @@ class BottomCheckOutView extends StatelessWidget {
               child: TextButton(
                   style: getButtonStyle(true, true),
                   onPressed: () {
-                    Get.toNamed(Routes.CHECKOUT);
+                    Get.toNamed(Routes.CHECKOUT,arguments: cartComponentList);
                   },
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text(AppValues.checkOut, style: getTitleTextStyleWhite()),
-                      Space(width: AppValues.margin_15),
-                      const Icon(
-                        Icons.arrow_circle_right_outlined,
-                        color: AppColors.colorWhite,
-                      )
-                    ],
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Text(AppValues.checkOut, style: getTitleTextStyleWhite()),
+                        Space(width: AppValues.margin_15),
+                        const Icon(
+                          Icons.arrow_circle_right_outlined,
+                          color: AppColors.colorWhite,
+                        )
+                      ],
+                    ),
                   )),
             )
           ],

@@ -71,7 +71,7 @@ class MainView extends BaseView<MainController> {
         Positioned(
             child: controller.cartRepository.totalQuantity != 0
                 ? BottomCheckOutView(
-                    totalPrice: controller.cartRepository.totalPrice.toString())
+                    totalPrice: controller.cartRepository.totalPrice.toString(),cartComponentList: controller.cartRepository.cartComponentCardList.value)
                 : SizedBox())
       ],
     );

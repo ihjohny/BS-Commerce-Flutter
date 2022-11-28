@@ -25,7 +25,14 @@ BoxDecoration getCardStyle() {
 TextStyle getTitleTextStyle() {
   return const TextStyle(
     color: AppColors.colorBlack,
-    fontSize: 18,
+    fontSize: 20,
+    fontWeight: FontWeight.bold,
+  );
+}
+TextStyle getSubTitleTextStyle() {
+  return const TextStyle(
+    color: AppColors.colorBlack,
+    fontSize: 14,
     fontWeight: FontWeight.bold,
   );
 }

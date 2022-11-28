@@ -1,6 +1,7 @@
 {
   "bottomNavHome": "Home",
   "homeAppBarTitle": "Home",
+  "checkOutAppBarTitle": "Check Out",
   "homeCartBarTitle": "My Cart",
   "bottomNavCart": "Cart",
   "bottomNavFavorite": "Favorite",

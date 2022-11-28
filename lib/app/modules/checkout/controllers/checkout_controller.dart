@@ -10,6 +10,7 @@ class CheckOutController extends BaseController {
   final CartRepository cartRepository =
       Get.find(tag: (CartRepository).toString());
   final Rx<UiData?> _data = Rx(null);
+  final RxBool haveAddress = RxBool(false);
 
   UiData? get data => _data.value;
   getCart() {
