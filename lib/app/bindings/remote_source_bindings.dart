@@ -1,4 +1,6 @@
 import 'package:bs_commerce/app/data/network/remote/cart/cart_remote_data_source_impl.dart';
+import 'package:bs_commerce/app/data/network/remote/check_out/check_out_remote_data_source.dart';
+import 'package:bs_commerce/app/data/network/remote/check_out/check_out_remote_data_source_impl.dart';
 import 'package:get/get.dart';
 
 import '../data/network/remote/auth/auth_remote_data_source.dart';
@@ -12,10 +14,8 @@ import '../data/network/remote/product_details/product_details_remote_data_sourc
 class RemoteSourceBindings implements Bindings {
   @override
   void dependencies() {
-    Get.lazyPut<HomeRemoteDataSource>(
-      () => HomeRemoteDataSourceImpl(),
-      tag: (HomeRemoteDataSource).toString(),fenix: true
-    );
+    Get.lazyPut<HomeRemoteDataSource>(() => HomeRemoteDataSourceImpl(),
+        tag: (HomeRemoteDataSource).toString(), fenix: true);
 
     Get.lazyPut<ProductDetailsRemoteDataSource>(
         () => ProductDetailsRemoteDataSourceImpl(),
@@ -27,5 +27,7 @@ class RemoteSourceBindings implements Bindings {
 
     Get.lazyPut<CartRemoteDataSource>(() => CartRemoteDataSourceImpl(),
         tag: (CartRemoteDataSource).toString(), fenix: true);
+    Get.lazyPut<CheckOutRemoteDataSource>(() => CheckOutRemoteDataSourceImpl(),
+        tag: (CheckOutRemoteDataSource).toString(), fenix: true);
   }
 }

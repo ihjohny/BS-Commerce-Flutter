@@ -9,6 +9,8 @@ import '../modules/auth/bindings/auth_bindings.dart';
 import '../modules/auth/views/sign_in_screen.dart';
 import '../modules/auth/views/sign_up_screen.dart';
 import '../modules/cart/bindings/cart_bindings.dart';
+import '../modules/checkout/bindings/checkout_binding.dart';
+import '../modules/checkout/views/checkout_screen.dart';
 import '/app/modules/home/bindings/home_binding.dart';
 import '/app/modules/home/views/home_view.dart';
 
@@ -49,6 +51,11 @@ class AppPages {
       name: _Paths.CART,
       page: () => CartScreen(),
       binding: CartBindings(),
+    ),
+    GetPage(
+      name: _Paths.CHECKOUT,
+      page: () => CheckOutScreen(),
+      binding: CheckOutBinding(),
     ),
   ];
 }

@@ -1,4 +1,6 @@
+import 'package:bs_commerce/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 import '../../../core/utils/utils.dart';
 import '../../../core/values/app_colors.dart';
@@ -41,7 +43,7 @@ class BottomCheckOutView extends StatelessWidget {
               child: TextButton(
                   style: getButtonStyle(true, true),
                   onPressed: () {
-                    ///TODO
+                    Get.toNamed(Routes.CHECKOUT);
                   },
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,

@@ -1,4 +1,6 @@
 import 'package:bs_commerce/app/data/network/repository/cart/cart_repository.dart';
+import 'package:bs_commerce/app/data/network/repository/check_out/checkout_repository.dart';
+import 'package:bs_commerce/app/data/network/repository/check_out/checkout_repository_impl.dart';
 import 'package:get/get.dart';
 
 import '../data/network/repository/auth/auth_repo.dart';
@@ -26,5 +28,7 @@ class RepositoryBindings implements Bindings {
 
     Get.lazyPut<CartRepository>(() => CartRepositoryImpl(),
         tag: (CartRepository).toString(), fenix: true);
+    Get.lazyPut<CheckOutRepository>(() => CheckOutRepositoryImpl(),
+        tag: (CheckOutRepository).toString(), fenix: true);
   }
 }

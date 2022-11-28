@@ -27,9 +27,15 @@ class CartScreen extends BaseView<CartController> {
               children: [
                 Padding(
                   padding: const EdgeInsets.symmetric(horizontal: 20.0),
-                  child: Icon(Icons.shopping_cart,color: AppColors.colorBlack,),
+                  child: Icon(
+                    Icons.shopping_cart,
+                    color: AppColors.colorBlack,
+                  ),
                 ),
-                Text(appLocalization.homeCartBarTitle,style: getTitleTextStyle(),),
+                Text(
+                  appLocalization.homeCartBarTitle,
+                  style: getTitleTextStyle(),
+                ),
               ],
             ),
           ),
@@ -37,6 +43,7 @@ class CartScreen extends BaseView<CartController> {
       ],
     );
   }
+
   @override
   Color statusBarColor() {
     return AppColors.colorWhite;
@@ -60,17 +67,22 @@ class CartScreen extends BaseView<CartController> {
   }
 
   Widget _getView() {
-    return  controller.data?.value!=null?ListView.separated(itemBuilder: (context,index){
-      return CartComponentCard(cartComponentModel: controller.data!.value[index]!,
-        onValueChanged: (value){
-        controller.updateCart(controller.data!.value[index]!.productId, value.toInt());
-        },
-        onValueDeleted: (){
-        controller.deleteProduct(controller.data!.value[index]!.productId);
-        },
-      );
-    }, separatorBuilder: (context,index){
-      return const Divider();
-    }, itemCount: controller.data?.value.length??0): Center(child: Text("No Data Found",style: getTitleTextStyle(),),);
+    return controller.data?.value != null
+        ? ListView.builder(
+            itemBuilder: (context, index) {
+              return CartComponentCard(
+                cartComponentModel: controller.data!.value[index]!,
+                onValueChanged: (value) {
+                  controller.updateCart(
+                      controller.data!.value[index]!.productId, value.toInt());
+                },
+                onValueDeleted: () {
+                  controller
+                      .deleteProduct(controller.data!.value[index]!.productId);
+                },
+              );
+            },
+            itemCount: controller.data?.value.length ?? 0)
+        : const SizedBox();
   }
 }
