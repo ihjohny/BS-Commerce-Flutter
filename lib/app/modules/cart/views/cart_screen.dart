@@ -34,7 +34,7 @@ class CartScreen extends BaseView<CartController> {
                 ),
                 Text(
                   appLocalization.homeCartBarTitle,
-                  style: getTitleTextStyle(),
+                  style: getAppBarTitleTextStyle(),
                 ),
               ],
             ),

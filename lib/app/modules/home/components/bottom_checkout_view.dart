@@ -34,9 +34,9 @@ class BottomCheckOutView extends StatelessWidget {
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(AppValues.totalPrice,style: getTitleTextStyle(),),
+                  Text(AppValues.totalPrice),
                   Space(height: AppValues.margin_10),
-                  Text(totalPrice + "\$",style: getTitleTextStyle(),)
+                  Text(getCurrencyString(totalPrice),style: getTitleTextStyle(),)
                 ],
               ),
             ),

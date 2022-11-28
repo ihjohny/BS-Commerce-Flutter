@@ -28,6 +28,7 @@ abstract class AppValues {
   static const double margin_2 = 2;
   static const double margin_4 = 4;
   static const double margin_6 = 6;
+  static const double margin_16 = 16;
   static const double margin_12 = 12;
   static const double margin_30 = 30;
   static const double margin_20 = 20;
@@ -121,6 +122,7 @@ abstract class AppValues {
   static const String signUp = "Sign Up";
   static const String signIn = "Sign In";
   static const String checkOut = "Check Out";
+  static const String continueToPayment = "Continue to Payment";
   static const String addNewAddress = "Add New Address";
   static const String alreadyHaveAnAccount = "Already have an account?";
   static const String dontHaveAnAccount = "Don't have an account?";

@@ -22,6 +22,10 @@ BoxDecoration getCardStyle() {
   );
 }
 
+String getCurrencyString(String string){
+  return "\$$string";
+}
+
 TextStyle getTitleTextStyle() {
   return const TextStyle(
     color: AppColors.colorBlack,
@@ -29,6 +33,15 @@ TextStyle getTitleTextStyle() {
     fontWeight: FontWeight.bold,
   );
 }
+
+TextStyle getAppBarTitleTextStyle() {
+  return const TextStyle(
+    color: AppColors.colorBlack,
+    fontSize: 24,
+    fontWeight: FontWeight.bold,
+  );
+}
+
 TextStyle getSubTitleTextStyle() {
   return const TextStyle(
     color: AppColors.colorBlack,

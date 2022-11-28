@@ -33,7 +33,7 @@ class CartComponentCard extends StatelessWidget {
                 fit: FlexFit.tight,
                 flex: 2,
                 child: Material(
-                  elevation: AppValues.elevation_half,
+                  elevation: 0,
                   borderRadius: const BorderRadius.all(
                       Radius.circular(AppValues.margin_15)),
                   child: Image.network(cartComponentModel.productImageUrl,
@@ -75,7 +75,7 @@ class CartComponentCard extends StatelessWidget {
                       Row(
                         children: [
                           Text(
-                              "${cartComponentModel.productPrice}\$ X ${cartComponentModel.productCount}"),
+                              getCurrencyString("${cartComponentModel.productPrice} X ${cartComponentModel.productCount}")),
                         ],
                       ),
                       Space(height:  haveDeleteButton
@@ -87,9 +87,8 @@ class CartComponentCard extends StatelessWidget {
                           Row(
                             mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
-                              Text(AppValues.totalPrice.substring(0, 5)),
                               Text(
-                                  " ${int.tryParse(cartComponentModel.productPrice)! * int.tryParse(cartComponentModel.productCount)!}\$",
+                                 getCurrencyString( "${int.tryParse(cartComponentModel.productPrice)! * int.tryParse(cartComponentModel.productCount)!}"),
                                   textAlign: TextAlign.start,
                                   maxLines: 1,
                                   style: getTitleTextStyle(),
@@ -99,8 +98,9 @@ class CartComponentCard extends StatelessWidget {
                           haveDeleteButton
                               ?  CircleAvatar(child: Text(cartComponentModel.productCount,style: getSubTitleTextStyle()),backgroundColor: AppColors.pageCartBackground,)
                               : CustomizableCounter(
-                                  backgroundColor: AppColors.pageCartBackground,
-                                  borderColor: AppColors.pageCartBackground,
+                            textSize: AppValues.margin_16,
+                                  backgroundColor: AppColors.colorWhite,
+                                  borderColor: AppColors.colorWhite,
                                   borderRadius: AppValues.margin_100,
                                   count: double.tryParse(
                                           cartComponentModel.productCount) ??
