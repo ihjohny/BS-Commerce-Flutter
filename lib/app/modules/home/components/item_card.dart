@@ -1,3 +1,4 @@
+import 'package:bs_commerce/app/core/utils/utils.dart';
 import 'package:bs_commerce/app/core/values/app_values.dart';
 import 'package:bs_commerce/app/core/widget/rating_and_sold.dart';
 import 'package:bs_commerce/app/modules/product_details/views/components/favorite_icon.dart';
@@ -17,7 +18,7 @@ class ProductCard extends StatelessWidget {
     return ListTile(
       title: Material(
         color: AppColors.colorWhite,
-        elevation: 1,
+        elevation: 0,
           borderRadius: BorderRadius.circular(PRODUCT_CARD_RADIUS),
           child: Stack(
             children: [
@@ -40,7 +41,7 @@ class ProductCard extends StatelessWidget {
         mainAxisSize: MainAxisSize.min,
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          AppValues.getVerticalSpace(8),
+          Space(height:8),
           Text(
             data?.info?.name ?? "",
             maxLines: 2,
@@ -51,7 +52,7 @@ class ProductCard extends StatelessWidget {
             ),
           ),
           const RatingAndSoldComponent(ratings: 5, soldValue: 100),
-          Text(AppValues.getCustomizableString(symbol: "\$", value: data?.info?.price.toString()),
+          Text(getCurrencyString(data?.info?.price.toString()??""),
               style: Theme.of(context).textTheme.titleLarge),
         ],
       ),

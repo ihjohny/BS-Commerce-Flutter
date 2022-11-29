@@ -45,10 +45,10 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          AppValues.getVerticalSpace(5.0),
+                          Space(height:5.0),
                           ItemNameComponent(controller: controller),
                           const Divider(),
-                          AppValues.getVerticalSpace(8),
+                          Space(height:8),
                           Text(
                             AppValues.description,
                             style: Theme.of(context).textTheme.titleLarge,
@@ -56,16 +56,16 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
                           Text(controller
                                   .data?.value?.data?.info?.shortDescription ??
                               ""),
-                          AppValues.getVerticalSpace(AppValues.minimumSpacing),
+                          Space(height:AppValues.minimumSpacing),
                           QuantityRowView(
                             initialValue: controller.count.value,
                             function: (value) {
                               controller.count.value = value;
                             }
                           ),
-                          AppValues.getVerticalSpace(AppValues.minimumSpacing),
+                          Space(height:AppValues.minimumSpacing),
                           const Divider(),
-                          AppValues.getVerticalSpace(AppValues.minimumSpacing),
+                          Space(height:AppValues.minimumSpacing),
                           getAddToCartView(context)
                         ],
                       ),
@@ -95,16 +95,14 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(AppValues.totalPrice),
-            AppValues.getVerticalSpace(5),
+            Space(height:5),
             Text(
-              AppValues.getCustomizableString(
-                  symbol: "\$",
-                  value: controller.data?.value?.data?.info?.price.toString()),
+              getCurrencyString(controller.data?.value?.data?.info?.price.toString()??""),
               style: Theme.of(context).textTheme.titleLarge,
             )
           ],
         ),
-        AppValues.getHorizontalSpace(AppValues.margin_15),
+    Space(width:AppValues.margin_15),
         TextButton(
           style: getButtonStyle(true, controller.count.value != 0.0),
           onPressed: controller.count.value != 0.0
@@ -121,7 +119,7 @@ class ProductDetailsScreen extends BaseView<ProductDetailsController> {
                   Icons.shopping_bag_outlined,
                   color: AppColors.colorWhite,
                 ),
-                AppValues.getHorizontalSpace(AppValues.margin_10),
+               Space(width:AppValues.margin_10),
                 const Text(
                   AppValues.addToCart,
                   style: TextStyle(color: Colors.white, fontSize: 15),

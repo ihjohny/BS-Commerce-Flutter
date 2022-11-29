@@ -8,10 +8,9 @@ import '../../../core/values/app_values.dart';
 import '../../auth/model/cart_component_model.dart';
 
 class BottomPaymentView extends StatelessWidget {
-
-
-  const BottomPaymentView( {Key? key})
+  const BottomPaymentView({Key? key, required this.callBackFunction})
       : super(key: key);
+  final VoidCallback callBackFunction;
 
   @override
   Widget build(BuildContext context) {
@@ -27,15 +26,14 @@ class BottomPaymentView extends StatelessWidget {
             vertical: AppValues.smallPadding, horizontal: AppValues.margin_15),
         child: TextButton(
             style: getButtonStyle(true, true),
-            onPressed: () {
-              ///TODO
-            },
+            onPressed: callBackFunction,
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 8.0),
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(AppValues.continueToPayment, style: getTitleTextStyleWhite()),
+                  Text(AppValues.continueToPayment,
+                      style: getTitleTextStyleWhite()),
                   Space(width: AppValues.margin_15),
                   const Icon(
                     Icons.arrow_circle_right_outlined,

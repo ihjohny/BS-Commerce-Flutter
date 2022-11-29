@@ -10,5 +10,7 @@
   "titleOtherView": "অন্যান্য",
   "settingsTheme": "থিম",
   "settingsLanguage": "ভাষা",
-  "settingsFontSize": "অক্ষরের আকার"
+  "settingsFontSize": "অক্ষরের আকার",
+  "shippingAddress": "ডেলিভারির ঠিকানা",
+  "itemList": "আইটেম লিস্ট"
 }

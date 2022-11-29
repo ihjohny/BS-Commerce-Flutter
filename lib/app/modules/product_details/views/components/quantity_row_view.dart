@@ -21,19 +21,12 @@ class QuantityRowView extends StatelessWidget {
         const SizedBox(
           width: 10,
         ),
-        Material(
-          color: AppColors.colorWhite,
-          borderRadius: BorderRadius.circular(AppValues.extraLargeRadius100),
-          elevation: 1,
-          animationDuration: Duration.zero,
-          borderOnForeground: false,
-          child: CustomizableCounter(
-            borderRadius: AppValues.extraLargeRadius100,
-            backgroundColor: AppColors.colorWhite,
-            count: initialValue,
-            onCountChange: function,
-            borderColor: Theme.of(context).scaffoldBackgroundColor,
-          ),
+        CustomizableCounter(
+          borderRadius: AppValues.extraLargeRadius100,
+          backgroundColor: AppColors.colorWhite,
+          count: initialValue,
+          onCountChange: function,
+          borderColor: Theme.of(context).scaffoldBackgroundColor,
         )
       ],
     );

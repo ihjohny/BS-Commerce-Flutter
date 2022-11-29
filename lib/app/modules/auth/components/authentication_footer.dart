@@ -3,6 +3,8 @@ import 'package:bs_commerce/app/core/values/app_colors.dart';
 import 'package:bs_commerce/app/core/values/app_values.dart';
 import 'package:flutter/material.dart';
 
+import '../../../core/utils/utils.dart';
+
 class AuthenticationFooter extends StatelessWidget {
   const AuthenticationFooter({Key? key}) : super(key: key);
 
@@ -10,7 +12,7 @@ class AuthenticationFooter extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        AppValues.getVerticalSpace(5),
+      Space(height: 5),
         Row(
           children: const [
             Expanded(
@@ -32,7 +34,7 @@ class AuthenticationFooter extends StatelessWidget {
                 )),
           ],
         ),
-        AppValues.getVerticalSpace(AppValues.margin_10),
+        Space(height:AppValues.margin_10),
         Row(
           children: [
             Expanded(
@@ -49,7 +51,7 @@ class AuthenticationFooter extends StatelessWidget {
                   },
                   text: "",
                 )),
-            AppValues.getHorizontalSpace(AppValues.margin_20),
+            Space(width:AppValues.margin_20),
             Expanded(
               flex: 1,
               child: GoogleAuthButton(
@@ -64,7 +66,7 @@ class AuthenticationFooter extends StatelessWidget {
                   },
                   text: ""),
             ),
-            AppValues.getHorizontalSpace(AppValues.margin_20),
+         Space(width:AppValues.margin_20),
             Expanded(
                 flex: 1,
                 child: FacebookAuthButton(

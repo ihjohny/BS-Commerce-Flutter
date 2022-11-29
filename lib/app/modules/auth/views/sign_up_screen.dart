@@ -7,6 +7,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/preferred_size.dart';
 import 'package:get/get.dart';
 
+import '../../../core/utils/utils.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/app_values.dart';
 import '../components/authentication_footer.dart';
@@ -58,14 +59,14 @@ class SignUpScreen extends BaseView<AuthController> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Image.asset('images/bs_logo.png', height: AppValues.margin_100),
-              AppValues.getVerticalSpace(AppValues.margin_20),
+              Space(height:AppValues.margin_20),
               const Text(
                 AppValues.createYourAccount,
                 style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
               ),
-              AppValues.getVerticalSpace(AppValues.margin_20),
+              Space(height:AppValues.margin_20),
               numberInputForm(),
-              AppValues.getVerticalSpace(AppValues.margin_20),
+              Space(height:AppValues.margin_20),
               nameInputForm()
             ],
           ),
@@ -83,14 +84,14 @@ class SignUpScreen extends BaseView<AuthController> {
           controller.namePasswordState.value
               ? getNameAndPasswordView()
               : const SizedBox(),
-          AppValues.getVerticalSpace(AppValues.margin_20),
+          Space(height:AppValues.margin_20),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               const Text(AppValues.alreadyHaveAnAccount,style: TextStyle(
                   color: AppColors.textColorGreyLight
               ),),
-              AppValues.getHorizontalSpace(AppValues.margin_10),
+              Space(width:AppValues.margin_10),
               GestureDetector(onTap: (){
                 Get.offNamed(Routes.SIGN_IN);
               }, child: const Text(AppValues.signIn,style: TextStyle(color: AppColors.colorBlack,fontSize: 16,decoration: TextDecoration.underline,fontWeight: FontWeight.bold),))
@@ -121,7 +122,7 @@ class SignUpScreen extends BaseView<AuthController> {
             },
             isEnableButton: controller.isSignUpButtonEnable.value,
             buttonText: AppValues.signUp),
-        AppValues.getVerticalSpace(AppValues.margin_10),
+        Space(height:AppValues.margin_10),
         const AuthenticationFooter(),
       ],
     );
@@ -129,7 +130,7 @@ class SignUpScreen extends BaseView<AuthController> {
 
   Widget getNamedView() {
     return Column(children: [
-      AppValues.getVerticalSpace(AppValues.margin_10),
+      Space(height:AppValues.margin_10),
       MyTextFormField(
           onPressed: (value) {
             if (value.isNotEmpty) {
@@ -148,7 +149,7 @@ class SignUpScreen extends BaseView<AuthController> {
                 ? AppColors.colorBlack
                 : AppColors.iconColorDefault,
           )),
-      AppValues.getVerticalSpace(AppValues.margin_10),
+      Space(height:AppValues.margin_10),
     ]);
   }
   Widget getPasswordView() {
@@ -186,7 +187,7 @@ class SignUpScreen extends BaseView<AuthController> {
               !controller.obsecureState.value;
             },
           )),
-      AppValues.getVerticalSpace(AppValues.margin_15),
+      Space(height:AppValues.margin_15),
     ]);
   }
 

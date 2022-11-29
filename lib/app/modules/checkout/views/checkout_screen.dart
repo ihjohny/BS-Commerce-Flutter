@@ -1,5 +1,4 @@
 import 'package:bs_commerce/app/modules/auth/model/cart_component_model.dart';
-import 'package:bs_commerce/app/modules/checkout/components/checkout_form_view.dart';
 import 'package:bs_commerce/app/modules/checkout/controllers/checkout_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +12,6 @@ import '../components/address_select_component.dart';
 import '../components/bottom_payment_view.dart';
 import '../model/address.dart';
 import '/app/core/base/base_view.dart';
-import '/app/core/widget/custom_app_bar.dart';
 
 class CheckOutScreen extends BaseView<CheckOutController> {
   List<CartComponentModel?>? cartComponentList;
@@ -51,11 +49,11 @@ class CheckOutScreen extends BaseView<CheckOutController> {
           padding: const EdgeInsets.only(bottom: AppValues.collapsedAppBarSize),
           child: Column(
             mainAxisSize: MainAxisSize.min,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.stretch,
             children: [
-              controller.haveAddress.value
+              controller.getShippingAddress() == null
                   ? getAddNewAddressView()
-                  : AddressSelection(
+                  : AddressSelection(shoppingAddressText: appLocalization.shippingAddress,
                       address: Address(
                           "Shahin",
                           "Bashar",
@@ -71,13 +69,32 @@ class CheckOutScreen extends BaseView<CheckOutController> {
                 padding: const EdgeInsets.all(
                   AppValues.margin_15,
                 ),
-                child: Text("Order List", style: getTitleTextStyle()),
+                child: Row(
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Text(appLocalization.itemList, style: getTitleTextStyle()),
+                    IconButton(onPressed: (){
+                      controller.isExpanded.value = !controller.isExpanded.value;
+                    }, icon:Icon(controller.isExpanded.value?Icons.expand_less_rounded:Icons.expand_circle_down_outlined ))
+                  ],
+                ),
               ),
               getOrderItemList()
             ],
           ),
         ),
-        Positioned(child: BottomPaymentView()),
+        Positioned(child: BottomPaymentView(callBackFunction: (){
+          controller.setAddress(Address(
+              "Shahin",
+              "Bashar",
+              "01613162522",
+              "Home",
+              "Brain Station 23 Ltd, Mirpur DOHS",
+              "",
+              "",
+              ""));
+          debugPrint(controller.getShippingAddress().toString());
+        },)),
       ],
     );
   }
@@ -87,6 +104,7 @@ class CheckOutScreen extends BaseView<CheckOutController> {
       child: ListView.builder(
           itemBuilder: (context, index) {
             return CartComponentCard(
+              count: 0,
               haveDeleteButton: true,
               cartComponentModel: cartComponentList![index]!,
               onValueChanged: (value) {
@@ -97,7 +115,7 @@ class CheckOutScreen extends BaseView<CheckOutController> {
               },
             );
           },
-          itemCount: cartComponentList?.length ?? 0),
+          itemCount: controller.isExpanded.value?cartComponentList?.length ?? 0:0),
     );
   }
 

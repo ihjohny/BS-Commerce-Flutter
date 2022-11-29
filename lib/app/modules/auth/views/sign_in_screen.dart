@@ -9,6 +9,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/preferred_size.dart';
 import 'package:get/get.dart';
 
+import '../../../core/utils/utils.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../routes/app_pages.dart';
 
@@ -49,22 +50,22 @@ class SignInScreen extends BaseView<AuthController> {
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Image.asset('images/bs_logo.png', height: AppValues.margin_100),
-                AppValues.getVerticalSpace(AppValues.margin_20),
+                Space(height:AppValues.margin_20),
                 const Text(
                   AppValues.loginToYoureAccount,
                   style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
                 ),
-                AppValues.getVerticalSpace(AppValues.margin_20),
+                Space(height:AppValues.margin_20),
                 getUserNameView(),
-                AppValues.getVerticalSpace(AppValues.margin_20),
+                Space(height:AppValues.margin_20),
                 getPasswordView(),
-                AppValues.getVerticalSpace(AppValues.margin_20),
+                Space(height:AppValues.margin_20),
                 getMyAuthButton(),
-                AppValues.getVerticalSpace(AppValues.margin_10),
+                Space(height:AppValues.margin_10),
                 const Text(AppValues.forgotPassword),
-                AppValues.getVerticalSpace(AppValues.margin_10),
+                Space(height:AppValues.margin_10),
                 const AuthenticationFooter(),
-                AppValues.getVerticalSpace(AppValues.margin_20),
+                Space(height:AppValues.margin_20),
                 getDontHaveAccountView()
               ],
             ),
@@ -136,7 +137,7 @@ bool checkAuthButtonStatus(){
           AppValues.dontHaveAnAccount,
           style: TextStyle(color: AppColors.textColorGreyLight),
         ),
-        AppValues.getHorizontalSpace(AppValues.margin_10),
+      Space(width:AppValues.margin_10),
         GestureDetector(
             onTap: () {
               Get.offNamed(Routes.SIGN_UP);

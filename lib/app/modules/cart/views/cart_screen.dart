@@ -71,6 +71,9 @@ class CartScreen extends BaseView<CartController> {
         ? ListView.builder(
             itemBuilder: (context, index) {
               return CartComponentCard(
+                count:  double.tryParse(
+                    controller.data!.value[index]!.productCount) ??
+                    0,
                 cartComponentModel: controller.data!.value[index]!,
                 onValueChanged: (value) {
                   controller.updateCart(

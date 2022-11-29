@@ -10,5 +10,7 @@
   "titleOtherView": "OtherView",
   "settingsTheme": "Theme",
   "settingsLanguage": "Language",
-  "settingsFontSize": "Font Size"
+  "settingsFontSize": "Font Size",
+  "shippingAddress": "Shipping Address",
+  "itemList": "Item List"
 }

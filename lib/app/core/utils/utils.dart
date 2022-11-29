@@ -64,3 +64,8 @@ SizedBox Space({double width = 0, double height = 0}) {
     height: height,
   );
 }
+
+String getCustomizableString(
+    {required String symbol, required String? value}) {
+  return "$symbol$value";
+}

@@ -1,3 +1,4 @@
+import 'package:bs_commerce/app/core/utils/utils.dart';
 import 'package:flutter/material.dart';
 
 import '../values/app_values.dart';
@@ -26,7 +27,7 @@ class RatingAndSoldComponent extends StatelessWidget {
                 padding: EdgeInsets.all(8),
                 child:Text("${soldValue.toString()} sold")),
           ),
-          AppValues.getHorizontalSpace(AppValues.margin_20),
+          Space(width:AppValues.margin_20),
           const Icon(Icons.star_half_outlined),
           Text(ratings.toString(),style: Theme.of(context).textTheme.titleMedium,)
         ],

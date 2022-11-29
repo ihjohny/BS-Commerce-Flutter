@@ -11,8 +11,10 @@ class CartComponentCard extends StatelessWidget {
       required this.cartComponentModel,
       required this.onValueChanged,
       this.haveDeleteButton = false,
+        required this.count,
       required this.onValueDeleted})
       : super(key: key);
+  final double count;
   final bool haveDeleteButton;
   final CartComponentModel cartComponentModel;
   final Function(double value) onValueChanged;
@@ -102,9 +104,7 @@ class CartComponentCard extends StatelessWidget {
                                   backgroundColor: AppColors.colorWhite,
                                   borderColor: AppColors.colorWhite,
                                   borderRadius: AppValues.margin_100,
-                                  count: double.tryParse(
-                                          cartComponentModel.productCount) ??
-                                      0,
+                                  count:count,
                                   onCountChange: onValueChanged,
                                 ),
                         ],

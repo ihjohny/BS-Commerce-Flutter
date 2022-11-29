@@ -136,21 +136,5 @@ abstract class AppValues {
   static const String tokenSaveSuccessfully = "Token Save Successfully";
   static const String thisFieldMustNotBeEmpty = 'This field must not be empty';
 
-  static Widget getVerticalSpace(double spaceValue) {
-    return SizedBox(
-      height: spaceValue,
-    );
-  }
-  static String getCustomizableString(
-      {required String symbol, required String? value}) {
-    return "$symbol$value";
-  }
-
- static Widget getHorizontalSpace(double spaceValue) {
-    return SizedBox(
-      width: spaceValue,
-    );
-  }
-
   static const String AUTH_TOKEN = "auth_token";
 }

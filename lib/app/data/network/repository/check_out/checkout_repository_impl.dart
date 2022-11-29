@@ -1,3 +1,4 @@
+import 'package:bs_commerce/app/modules/checkout/model/address.dart';
 import 'package:bs_commerce/app/modules/product_details/model/cart_response.dart';
 import 'package:get/get.dart';
 
@@ -69,8 +70,7 @@ class CheckOutRepositoryImpl implements CheckOutRepository {
   }
 
   @override
-  Future<CartResponse> updateProduct(
-      String productId, int quantity) {
+  Future<CartResponse> updateProduct(String productId, int quantity) {
     return _remoteSource.updateProduct(productId, quantity).then((value) {
       cartComponentCardList.clear();
       totalPrice.value = 0;
@@ -79,5 +79,15 @@ class CheckOutRepositoryImpl implements CheckOutRepository {
 
       return value;
     });
+  }
+
+  @override
+  Rx<Address?> address  = Rx(null);
+
+  @override
+  Address? setShippingAddress(Address v) {
+    address.value= v;
+
+    return address.value;
   }
 }
