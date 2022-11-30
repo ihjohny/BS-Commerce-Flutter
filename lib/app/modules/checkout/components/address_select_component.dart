@@ -1,4 +1,5 @@
 import 'package:bs_commerce/app/core/values/app_colors.dart';
+import 'package:bs_commerce/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -18,7 +19,10 @@ class AddressSelection extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(shoppingAddressText,style: getTitleTextStyle(),),
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Text(shoppingAddressText,style: getTitleTextStyle(),),
+          ),
           Space(height: AppValues.margin_20),
           Container(
             decoration: getCardStyle(),
@@ -27,7 +31,7 @@ class AddressSelection extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Expanded(flex:1,child: CircleAvatar(
+                  const Expanded(flex:1,child: CircleAvatar(
                     backgroundColor: AppColors.pageCartBackground,
                     child: Padding(padding: EdgeInsets.all(8.0),child: CircleAvatar(
                       backgroundColor: AppColors.colorBlack,
@@ -38,15 +42,18 @@ class AddressSelection extends StatelessWidget {
                   Expanded(flex:3,child: Column(
                     crossAxisAlignment:CrossAxisAlignment.start,
                     children: [
-                      Text(address.lebel,style: getTitleTextStyle(),),
-                      Text(address.addressOne),
+                      Text(address.Name,style: getTitleTextStyle(),),
+                      Space(height: AppValues.margin_2),
+                      Text(address.address),
                     ],
                   )),
                   Expanded(
                     flex: 1,
                     child: TextButton(onPressed: (){
-                      Get.to(AddressForm());
-                    }, child: Icon(Icons.edit,color: AppColors.colorPrimary,)
+                      Get.to(AddressForm(
+                        address: address,
+                      ));
+                    }, child: const Icon(Icons.edit,color: AppColors.colorPrimary,)
                     ),
                   )
                 ],

@@ -9,6 +9,7 @@ class MainController extends BaseController {
   final _selectedMenuCodeController = MenuCode.HOME.obs;
   final CartRepository cartRepository =
       Get.find(tag: (CartRepository).toString());
+
   MenuCode get selectedMenuCode => _selectedMenuCodeController.value;
 
   final lifeCardUpdateController = false.obs;

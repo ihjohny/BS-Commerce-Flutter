@@ -24,7 +24,7 @@ class MyTextFormField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
-      textAlign: TextAlign.start,
+      textAlign: TextAlign.center,
         controller: editingController,
         style: GoogleFonts.alef (
           textStyle: const TextStyle(

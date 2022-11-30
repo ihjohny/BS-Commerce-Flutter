@@ -45,7 +45,7 @@ class BottomCheckOutView extends StatelessWidget {
               child: TextButton(
                   style: getButtonStyle(true, true),
                   onPressed: () {
-                    Get.toNamed(Routes.CHECKOUT,arguments: cartComponentList);
+                    Get.toNamed(Routes.CHECKOUT,arguments: cartComponentList,preventDuplicates: true);
                   },
                   child: Padding(
                     padding: const EdgeInsets.symmetric(vertical: 8.0),

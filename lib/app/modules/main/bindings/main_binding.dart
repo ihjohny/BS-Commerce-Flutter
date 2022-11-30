@@ -1,6 +1,8 @@
-import 'package:bs_commerce/app/modules/main/controllers/bottom_nav_controller.dart';
+import 'package:bs_commerce/app/modules/checkout/controllers/checkout_controller.dart';
 import 'package:get/get.dart';
 
+import '../../cart/controllers/cart_controller.dart';
+import '../../product_details/controllers/product_details_controller.dart';
 import '/app/modules/home/controllers/home_controller.dart';
 import '/app/modules/main/controllers/main_controller.dart';
 
@@ -15,9 +17,15 @@ class MainBinding extends Bindings {
       () => HomeController(),
       fenix: true,
     );
-    // Get.lazyPut<CartController>(
-    //   () => CartController(),
-    // );
+    Get.lazyPut<CartController>(
+      () => CartController(),
+    );
+    Get.lazyPut<ProductDetailsController>(
+            () => ProductDetailsController(),fenix: true
+    );
+    Get.lazyPut<CheckOutController>(
+            () => CheckOutController(),fenix: true
+    );
     // Get.lazyPut<SettingsController>(
     //   () => SettingsController(),
     // );
