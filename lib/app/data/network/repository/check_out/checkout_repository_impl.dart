@@ -1,5 +1,6 @@
 import 'package:bs_commerce/app/modules/checkout/model/address.dart';
 import 'package:bs_commerce/app/modules/product_details/model/cart_response.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import '../../../../modules/auth/model/cart_component_model.dart';
@@ -7,6 +8,11 @@ import '../../remote/cart/cart_remote_data_source.dart';
 import 'checkout_repository.dart';
 
 class CheckOutRepositoryImpl implements CheckOutRepository {
+
+  CheckOutRepositoryImpl() {
+    debugPrint("test 1: CheckOutRepositoryImpl instance created");
+  }
+
   @override
   final RxInt totalPrice = RxInt(0);
   @override
