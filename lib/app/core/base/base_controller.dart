@@ -110,6 +110,8 @@ abstract class BaseController extends GetxController {
     if (onError != null) onError(_exception);
 
     onComplete == null ? hideLoading() : onComplete();
+
+    return _exception;
   }
 
   @override

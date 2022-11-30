@@ -1,3 +1,16 @@
 {
-  "homeAppBarTitle": "Food Delivery"
+  "bottomNavHome": "Home",
+  "homeAppBarTitle": "Home",
+  "checkOutAppBarTitle": "Check Out",
+  "homeCartBarTitle": "My Cart",
+  "bottomNavCart": "Cart",
+  "bottomNavFavorite": "Favorite",
+  "bottomNavProfile": "Profile",
+  "bottomNavSettings": "Settings",
+  "titleOtherView": "OtherView",
+  "settingsTheme": "Theme",
+  "settingsLanguage": "Language",
+  "settingsFontSize": "Font Size",
+  "shippingAddress": "Shipping Address",
+  "itemList": "Item List"
 }

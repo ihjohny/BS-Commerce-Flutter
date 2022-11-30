@@ -1,3 +1,16 @@
 {
-    "homeAppBarTitle": "হোম"
+  "bottomNavHome": "হোম",
+  "checkOutAppBarTitle": "চেক আউট",
+  "homeAppBarTitle": "হোম",
+  "homeCartBarTitle": "আমার কার্ট",
+  "bottomNavFavorite": "ফেভারিট",
+  "bottomNavCart": "কার্ট",
+  "bottomNavSettings": "সেটিংস",
+  "bottomNavProfile": "প্রোফাইল",
+  "titleOtherView": "অন্যান্য",
+  "settingsTheme": "থিম",
+  "settingsLanguage": "ভাষা",
+  "settingsFontSize": "অক্ষরের আকার",
+  "shippingAddress": "ডেলিভারির ঠিকানা",
+  "itemList": "আইটেম লিস্ট"
 }

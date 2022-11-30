@@ -2,17 +2,19 @@ import 'package:flutter/material.dart';
 
 abstract class AppColors {
   static const Color pageBackground = Color(0xFFFAFBFD);
-  static const Color statusBarColor = Color(0xFF38686A);
-  static const Color appBarColor = Color(0xFF38686A);
-  static const Color appBarIconColor = Color(0xFFFFFFFF);
-  static const Color appBarTextColor = Color(0xFFFFFFFF);
+  static const Color pageCartBackground = Color(0xA888383);
+  static const Color statusBarColor = Color(0xFF0C0C0C);
+  static const Color appBarColor = Colors.white;
+  static const Color appBarIconColor = Color(0xFF0C0C0C);
+  static const Color appBarTextColor = Color(0xFF0C0C0C);
 
   static const Color centerTextColor = Colors.grey;
   static const MaterialColor colorPrimarySwatch = Colors.cyan;
-  static const Color colorPrimary = Color(0xFF38686A);
+  static const Color colorPrimary = Color(0xFF0C0C0C);
   static const Color colorAccent = Color(0xFF38686A);
   static const Color colorLightGreen = Color(0xFF00EFA7);
   static const Color colorWhite = Color(0xFFFFFFFF);
+  static const Color colorBlack = Color(0xFF000000);
   static const Color lightGreyColor = Color(0xFFC4C4C4);
   static const Color errorColor = Color(0xFFAB0B0B);
   static const Color colorDark = Color(0xFF323232);
@@ -30,6 +32,7 @@ abstract class AppColors {
   static const Color textColorCyan = Color(0xFF38686A);
   static const Color textColorWhite = Color(0xFFFFFFFF);
   static Color searchFieldTextColor = const Color(0xFF323232).withOpacity(0.5);
+  static Color searchFieldBgColor = const Color(0xFF000000).withOpacity(0.05);
 
   static const Color iconColorDefault = Colors.grey;
 

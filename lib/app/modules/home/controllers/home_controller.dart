@@ -1,23 +1,32 @@
 import 'package:get/get.dart';
 
-import '../../../data/product/model/data_model.dart';
-import '../../../data/product/repository/catalogue_repository.dart';
+import '../../../data/network/model/product_home/response.dart';
+import '../../../data/network/repository/cart/cart_repository.dart';
+import '../../../data/network/repository/home/home_repository.dart';
 import '/app/core/base/base_controller.dart';
 import '/app/modules/home/model/ui_data.dart';
 
 class HomeController extends BaseController {
-  final CatalogueRepository _repository =
-      Get.find(tag: (CatalogueRepository).toString());
-
+  final HomeRepository _repository = Get.find(tag: (HomeRepository).toString());
+  final CartRepository cartRepository =
+      Get.find(tag: (CartRepository).toString());
   final Rx<UiData?> _data = Rx(null);
 
   UiData? get data => _data.value;
 
-  getDetails() {
-    callDataService(_repository.getDetails(), onSuccess: _handleDataResponse);
+  getHomePageProducts() {
+    callDataService(_repository.getHomePageProducts(),
+        onSuccess: _handleDataResponse);
+  }
+  getCart() {
+    callDataService(cartRepository.getCart());
   }
 
-  _handleDataResponse(Data data) {
-    _data(UiData(data.value));
+  onRefresh() {
+    getHomePageProducts();
+  }
+
+  _handleDataResponse(ProductHomeResponse data) {
+    _data(UiData(data));
   }
 }

@@ -1,3 +1,5 @@
+import 'package:bs_commerce/app/modules/main/bindings/main_binding.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
 import 'local_source_bindings.dart';

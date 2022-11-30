@@ -1,3 +1,4 @@
+import 'package:flutter/material.dart';
 abstract class AppValues {
   static const double padding = 16;
   static const double padding_zero = 0;
@@ -9,6 +10,8 @@ abstract class AppValues {
   static const double padding_4 = 4;
   static const double padding_2 = 2;
   static const double padding_3 = 3;
+  static const double padding_80 = 80;
+  static const double padding_90 = 90;
   static const double buttonVerticalPadding = 12;
 
   static const double margin = 16;
@@ -19,16 +22,21 @@ abstract class AppValues {
   static const double margin_40 = 40;
   static const double margin_32 = 32;
   static const double margin_18 = 18;
+  static const double margin_10 = 10;
+  static const double margin_15 = 15;
+  static const double margin_100 = 100;
   static const double margin_2 = 2;
   static const double margin_4 = 4;
   static const double margin_6 = 6;
+  static const double margin_16 = 16;
   static const double margin_12 = 12;
-  static const double margin_10 = 10;
   static const double margin_30 = 30;
   static const double margin_20 = 20;
   static const double extraLargeMargin = 36;
   static const double marginBelowVerticalLine = 64;
+  static const double minimumSpacing = 16;
   static const double extraLargeSpacing = 96;
+  static const double mainAxisSpacing = 70;
 
   static const double radius = 16;
   static const double radius_zero = 0;
@@ -38,8 +46,10 @@ abstract class AppValues {
   static const double largeRadius = 24;
   static const double roundedButtonRadius = 24;
   static const double extraLargeRadius = 36;
+  static const double extraLargeRadius100 = 100;
 
   static const double elevation = 16;
+  static const double elevation_half = 0.5;
   static const double smallElevation = 8;
   static const double extraSmallElevation = 4;
   static const double largeElevation = 24;
@@ -96,4 +106,35 @@ abstract class AppValues {
   static const int defaultThrottleTimeInMilliSeconds = 500;
 
   static const double height_16 = 16;
+  static const double text_height_18 = 18;
+
+  static const double phoneNumberLength = 11;
+  static const int value_24 = 24;
+  static const int value_30 = 30;
+  static const int status_code_201 = 201;
+
+///String Value
+  static const String description = "Description";
+  static const String totalPrice = "Total Price";
+  static const String addToCart = "Add To Cart";
+  static const String verify = "Verify";
+  static const String otp = "OTP";
+  static const String signUp = "Sign Up";
+  static const String signIn = "Sign In";
+  static const String checkOut = "Check Out";
+  static const String continueToPayment = "Continue to Payment";
+  static const String addNewAddress = "Add New Address";
+  static const String alreadyHaveAnAccount = "Already have an account?";
+  static const String dontHaveAnAccount = "Don't have an account?";
+  static const String error = "Error";
+  static const String enterYourNumberEmail = "Enter Your Number or Email";
+  static const String forgotPassword = "Forgot Your Password?";
+  static const String enterYourPassword = "Enter Your Password";
+  static const String enterYourName = "Enter Your Name";
+  static const String createYourAccount = "Create Your Account";
+  static const String loginToYoureAccount = "Log In to Your Account";
+  static const String tokenSaveSuccessfully = "Token Save Successfully";
+  static const String thisFieldMustNotBeEmpty = 'This field must not be empty';
+
+  static const String AUTH_TOKEN = "auth_token";
 }
