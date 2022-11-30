@@ -16,51 +16,41 @@ class AddressSelection extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: Text(shoppingAddressText,style: getTitleTextStyle(),),
-          ),
-          Space(height: AppValues.margin_20),
-          Container(
-            decoration: getCardStyle(),
-            child: Padding(
-              padding: const EdgeInsets.all(4.0),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Container(
+        decoration: getCardStyle(),
+        child: Padding(
+          padding: const EdgeInsets.all(4.0),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              const Expanded(flex:1,child: CircleAvatar(
+                backgroundColor: AppColors.pageCartBackground,
+                child: Padding(padding: EdgeInsets.all(8.0),child: CircleAvatar(
+                  backgroundColor: AppColors.colorBlack,
+                  child: Icon(Icons.home,color: AppColors.colorWhite,
+                  ),
+                ),),
+              )),
+              Expanded(flex:3,child: Column(
+                crossAxisAlignment:CrossAxisAlignment.start,
                 children: [
-                  const Expanded(flex:1,child: CircleAvatar(
-                    backgroundColor: AppColors.pageCartBackground,
-                    child: Padding(padding: EdgeInsets.all(8.0),child: CircleAvatar(
-                      backgroundColor: AppColors.colorBlack,
-                      child: Icon(Icons.home,color: AppColors.colorWhite,
-                      ),
-                    ),),
-                  )),
-                  Expanded(flex:3,child: Column(
-                    crossAxisAlignment:CrossAxisAlignment.start,
-                    children: [
-                      Text(address.Name,style: getTitleTextStyle(),),
-                      Space(height: AppValues.margin_2),
-                      Text(address.address),
-                    ],
-                  )),
-                  Expanded(
-                    flex: 1,
-                    child: TextButton(onPressed: (){
-                      Get.to(AddressForm(
-                        address: address,
-                      ));
-                    }, child: const Icon(Icons.edit,color: AppColors.colorPrimary,)
-                    ),
-                  )
+                  Text(address.Name,style: getTitleTextStyle(),),
+                  Space(height: AppValues.margin_2),
+                  Text(address.address),
                 ],
-              ),
-            ),
+              )),
+              Expanded(
+                flex: 1,
+                child: TextButton(onPressed: (){
+                  Get.to(AddressForm(
+                    address: address,
+                  ));
+                }, child: const Icon(Icons.edit,color: AppColors.colorPrimary,)
+                ),
+              )
+            ],
           ),
-        ],
+        ),
       ),
     );
   }

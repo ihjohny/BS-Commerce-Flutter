@@ -43,36 +43,52 @@ class CheckOutScreen extends BaseView<CheckOutController> {
   }
 
   Widget _getView() {
-    return SingleChildScrollView(
-      child: Stack(
-        alignment: Alignment.bottomCenter,
-        children: [
-          getPaymentButtonView(),
-          Padding(
+    return Stack(
+      alignment: Alignment.bottomCenter,
+      children: [
+        getPaymentButtonView(),
+        Container(
+          height: Get.height,
+          child: Padding(
             padding: const EdgeInsets.only(bottom: AppValues.collapsedAppBarSize),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              crossAxisAlignment: CrossAxisAlignment.stretch,
-              children: [
-                controller.address?.value == null
-                    ? getAddNewAddressView()
-                    : AddressSelection(
+            child: SingleChildScrollView(
+              child: Column(
+                mainAxisSize: MainAxisSize.max,
+                mainAxisAlignment: MainAxisAlignment.start,
+                children: [
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: AppValues.margin_15,vertical: AppValues.margin_6),
+                        child: Text(appLocalization.shippingAddress,style: getTitleTextStyle(),),
+                      ),
+                      Space(height: AppValues.margin_6),
+                      controller.address?.value == null
+                          ? getAddNewAddressView()
+                          : AddressSelection(
                         shoppingAddressText: appLocalization.shippingAddress,
                         address: controller.address!.value!,
                       ),
-                const Divider(),
-                Padding(
-                  padding: const EdgeInsets.all(
-                    AppValues.margin_15,
+                      const Divider(),
+                    ],
+                  )
+                ,
+                  Padding(
+                    padding: const EdgeInsets.all(
+                      AppValues.margin_15,
+                    ),
+                    child: getItemListRowView(),
                   ),
-                  child: getItemListRowView(),
-                ),
-                ListTile(title: getOrderItemList(),subtitle: getInvoiceView(),)
-              ],
+                  ListTile(title: getOrderItemList(),subtitle: getInvoiceView(),)
+                ],
+              ),
             ),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
