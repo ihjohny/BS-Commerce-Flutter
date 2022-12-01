@@ -65,7 +65,6 @@ class CheckOutScreen extends BaseView<CheckOutController> {
                         padding: const EdgeInsets.symmetric(horizontal: AppValues.margin_15,vertical: AppValues.margin_6),
                         child: Text(appLocalization.shippingAddress,style: getTitleTextStyle(),),
                       ),
-                      Space(height: AppValues.margin_6),
                       controller.address?.value == null
                           ? getAddNewAddressView()
                           : AddressSelection(
@@ -173,7 +172,7 @@ class CheckOutScreen extends BaseView<CheckOutController> {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 8.0),
       child: TextButton(
-          style: getButtonStyle(true, true),
+          style: getButtonStyle(true, false),
           onPressed: () {
             Get.to( AddressForm());
           },
