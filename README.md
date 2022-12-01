@@ -9,8 +9,8 @@ Home Screen | Cart Screen
 -------------|-----------------
 ![alt text](screenshots/home.png "Home Screen") | ![alt text](screenshots/cart_bs.png "Cart Screen")
 
-Home Screen | Cart Screen
--------------|-----------------
+Product Details Screen
+----------------------!
 ![alt text](screenshots/details.png "Product Details Screen") 
 
 Check Out Screen | Shipping Address Screen
