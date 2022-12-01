@@ -11,7 +11,7 @@ Home Screen | Cart Screen
 
 Product Details Screen | Add Shipping Address Screen
 ---------------------- | ------------------
-![alt text](screenshots/details.jpeg "Product Details Screen") | ![alt text](screenshots/add_new_address.png "Add Address Screen")
+![alt text](screenshots/details.png "Product Details Screen") | ![alt text](screenshots/add_new_address.png "Add Address Screen")
 
 Check Out Screen | Shipping Address Screen
 -------------|-----------------
