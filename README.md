@@ -7,7 +7,7 @@ Sign Up Screen | Sign In Screen
 
 Home Screen | Product Details Screen
 -------------|-----------------
-![alt text](screenshots/home.png "Home Screen") ![alt text](screenshots/details.png "Product Details Screen") |
+![alt text](screenshots/home.png "Home Screen") ![alt text](screenshots/details.png "Product Details Screen") 
 
 Cart Screen | Add Shipping Address Screen
 ---------------------- | ------------------
