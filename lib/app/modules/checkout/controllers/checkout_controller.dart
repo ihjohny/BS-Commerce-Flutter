@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 
+import '../../../data/network/model/check_out/order_payload.dart';
 import '../../../data/network/repository/cart/cart_repository.dart';
 import '../../../data/network/repository/check_out/checkout_repository.dart';
 import '../model/address.dart';
@@ -35,7 +36,9 @@ class CheckOutController extends BaseController {
     debugPrint(_repository.setShippingAddress(address).toString());
   }
 
-// _handleDataResponse(ProductCheckOutResponse data) {
+  placeOrder() {
+    callDataService(_repository.placeOrder(OrderPayLoad()));
+  } // _handleDataResponse(ProductCheckOutResponse data) {
 //   _data(UiData(data));
 // }
 }

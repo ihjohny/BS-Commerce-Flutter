@@ -140,7 +140,6 @@ class CheckOutScreen extends BaseView<CheckOutController> {
               callBackFunction: () {
                 controller.setAddress(Address("Shahin", "Bashar", "01613162522",
                     "Home", "Brain Station 23 Ltd, Mirpur DOHS",""));
-                debugPrint(controller.address.toString());
               },
             ));
   }
@@ -175,6 +174,7 @@ class CheckOutScreen extends BaseView<CheckOutController> {
           style: getButtonStyle(true, false),
           onPressed: () {
             Get.to( AddressForm());
+            controller.placeOrder();
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
