@@ -1,4 +1,3 @@
-import 'package:flutter/material.dart';
 abstract class AppValues {
   static const double padding = 16;
   static const double padding_zero = 0;
@@ -113,7 +112,7 @@ abstract class AppValues {
   static const int value_30 = 30;
   static const int status_code_201 = 201;
 
-///String Value
+  ///String Value
   static const String description = "Description";
   static const String totalPrice = "Total Price";
   static const String addToCart = "Add To Cart";
@@ -124,7 +123,11 @@ abstract class AppValues {
   static const String checkOut = "Check Out";
   static const String continueToPayment = "Continue to Payment";
   static const String addNewAddress = "Add New Address";
+  static const String viewOrder = "View Order";
+  static const String orderSuccessful = "Order Successful!";
   static const String alreadyHaveAnAccount = "Already have an account?";
+  static const String youHaveSuccessfullyMadeorder =
+      "You have successfully made order";
   static const String dontHaveAnAccount = "Don't have an account?";
   static const String error = "Error";
   static const String enterYourNumberEmail = "Enter Your Number or Email";

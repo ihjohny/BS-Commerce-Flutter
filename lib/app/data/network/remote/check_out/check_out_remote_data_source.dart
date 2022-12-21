@@ -4,9 +4,9 @@ import '../../model/check_out/order_payload.dart';
 import '../../model/check_out/order_response.dart';
 
 abstract class CheckOutRemoteDataSource {
-  Future<CartResponse>addToCart(String productId, int quantity);
+  Future<CartResponse> addToCart(String productId, int quantity);
   Future<CartResponse> getCart();
   Future<CartResponse> updateProduct(String productId, int quantity);
   Future<CartResponse> deleteProduct(String productId);
-  Future<OrderResponse?> placeOrder(OrderPayLoad orderPayload);
+  Future<OrderSuccessResponse?> placeOrder(OrderPayload orderPayload);
 }

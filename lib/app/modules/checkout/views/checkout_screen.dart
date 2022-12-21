@@ -1,18 +1,17 @@
 import 'package:bs_commerce/app/modules/auth/model/cart_component_model.dart';
+import 'package:bs_commerce/app/modules/checkout/components/payment_screen.dart';
 import 'package:bs_commerce/app/modules/checkout/controllers/checkout_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
+import '/app/core/base/base_view.dart';
 import '../../../core/utils/utils.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/app_values.dart';
-import '../../../routes/app_pages.dart';
 import '../../cart/components/cart_component_card.dart';
 import '../components/address_select_component.dart';
 import '../components/bottom_payment_view.dart';
 import '../components/checkout_form_view.dart';
-import '../model/address.dart';
-import '/app/core/base/base_view.dart';
 
 class CheckOutScreen extends BaseView<CheckOutController> {
   List<CartComponentModel?>? cartComponentList;
@@ -47,10 +46,11 @@ class CheckOutScreen extends BaseView<CheckOutController> {
       alignment: Alignment.bottomCenter,
       children: [
         getPaymentButtonView(),
-        Container(
+        SizedBox(
           height: Get.height,
           child: Padding(
-            padding: const EdgeInsets.only(bottom: AppValues.collapsedAppBarSize),
+            padding:
+                const EdgeInsets.only(bottom: AppValues.collapsedAppBarSize),
             child: SingleChildScrollView(
               child: Column(
                 mainAxisSize: MainAxisSize.max,
@@ -62,26 +62,34 @@ class CheckOutScreen extends BaseView<CheckOutController> {
                     mainAxisSize: MainAxisSize.min,
                     children: [
                       Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: AppValues.margin_15,vertical: AppValues.margin_6),
-                        child: Text(appLocalization.shippingAddress,style: getTitleTextStyle(),),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: AppValues.margin_15,
+                            vertical: AppValues.margin_6),
+                        child: Text(
+                          appLocalization.shippingAddress,
+                          style: getTitleTextStyle(),
+                        ),
                       ),
                       controller.address?.value == null
                           ? getAddNewAddressView()
                           : AddressSelection(
-                        shoppingAddressText: appLocalization.shippingAddress,
-                        address: controller.address!.value!,
-                      ),
+                              shoppingAddressText:
+                                  appLocalization.shippingAddress,
+                              address: controller.address!.value!,
+                            ),
                       const Divider(),
                     ],
-                  )
-                ,
+                  ),
                   Padding(
                     padding: const EdgeInsets.all(
                       AppValues.margin_15,
                     ),
                     child: getItemListRowView(),
                   ),
-                  ListTile(title: getOrderItemList(),subtitle: getInvoiceView(),)
+                  ListTile(
+                    title: getOrderItemList(),
+                    subtitle: getInvoiceView(),
+                  )
                 ],
               ),
             ),
@@ -93,55 +101,55 @@ class CheckOutScreen extends BaseView<CheckOutController> {
 
   Column getInvoiceView() {
     return Column(
-                children: [
-                  const Divider(),
-                  Space(height: AppValues.margin_20),
-                  Container(
-                    decoration: getCardStyle(),
-                    child: Padding(
-                      padding: const EdgeInsets.all(20.0),
-                      child: Column(
-                        children: [
-                          getInvoiceItemView("Amount",controller.cartRepository.totalPrice.string),
-                          Space(height: AppValues.margin_10),
-                          getInvoiceItemView("Shipping","-"),
-                          Space(height: AppValues.margin_10),
-                          const Divider(),
-                          getInvoiceItemView("Total",controller.cartRepository.totalPrice.string),
-                        ],
-                      ),
-                    ),
-                  ),
-                ],
-              );
+      mainAxisSize: MainAxisSize.min,
+      children: [
+        const Divider(),
+        Space(height: AppValues.margin_20),
+        Container(
+          decoration: getCardStyle(),
+          child: Padding(
+            padding: const EdgeInsets.all(20.0),
+            child: Column(
+              children: [
+                getInvoiceItemView("Amount", controller.totalPrice.toString()),
+                Space(height: AppValues.margin_10),
+                getInvoiceItemView("Shipping", "-"),
+                Space(height: AppValues.margin_10),
+                const Divider(),
+                getInvoiceItemView("Total", controller.totalPrice.toString()),
+              ],
+            ),
+          ),
+        ),
+      ],
+    );
   }
 
   Widget getItemListRowView() {
     return Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  mainAxisSize: MainAxisSize.max,
-                  children: [
-                    Text(appLocalization.itemList, style: getTitleTextStyle()),
-                    IconButton(
-                        onPressed: () {
-                          controller.isExpanded.value =
-                              !controller.isExpanded.value;
-                        },
-                        icon: Icon(controller.isExpanded.value
-                            ? Icons.expand_less_rounded
-                            : Icons.expand_circle_down_outlined))
-                  ],
-                );
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      mainAxisSize: MainAxisSize.max,
+      children: [
+        Text(appLocalization.itemList, style: getTitleTextStyle()),
+        IconButton(
+            onPressed: () {
+              controller.isExpanded.value = !controller.isExpanded.value;
+            },
+            icon: Icon(controller.isExpanded.value
+                ? Icons.expand_less_rounded
+                : Icons.expand_circle_down_outlined))
+      ],
+    );
   }
 
   Positioned getPaymentButtonView() {
     return Positioned(
-            child: BottomPaymentView(
-              callBackFunction: () {
-                controller.setAddress(Address("Shahin", "Bashar", "01613162522",
-                    "Home", "Brain Station 23 Ltd, Mirpur DOHS",""));
-              },
-            ));
+        child: BottomPaymentView(
+      buttonText: AppValues.continueToPayment,
+      callBackFunction: () {
+        Get.to(PaymentScreen());
+      },
+    ));
   }
 
   Expanded getOrderItemList() {
@@ -173,8 +181,7 @@ class CheckOutScreen extends BaseView<CheckOutController> {
       child: TextButton(
           style: getButtonStyle(true, false),
           onPressed: () {
-            Get.to( AddressForm());
-            controller.placeOrder();
+            Get.to(AddressForm());
           },
           child: Padding(
             padding: const EdgeInsets.symmetric(vertical: 8.0),
@@ -188,14 +195,11 @@ class CheckOutScreen extends BaseView<CheckOutController> {
     );
   }
 
-  Widget getInvoiceItemView(String title,String value) {
+  Widget getInvoiceItemView(String title, String value) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       mainAxisSize: MainAxisSize.max,
-      children: [
-        Text(title),
-        Text(value)
-      ],
+      children: [Text(title), Text(value)],
     );
   }
 }

@@ -2,8 +2,9 @@ import 'package:bs_commerce/app/data/network/model/check_out/order_payload.dart'
 import 'package:bs_commerce/app/data/network/model/check_out/order_response.dart';
 import 'package:bs_commerce/app/modules/product_details/model/cart_response.dart';
 import 'package:dio/dio.dart';
-import '../../../../network/dio_provider.dart';
+
 import '/app/core/base/base_remote_source.dart';
+import '../../../../network/dio_provider.dart';
 import 'check_out_remote_data_source.dart';
 
 class CheckOutRemoteDataSourceImpl extends BaseRemoteSource
@@ -21,8 +22,7 @@ class CheckOutRemoteDataSourceImpl extends BaseRemoteSource
   @override
   Future<CartResponse> getCart() {
     var endpoint = "${DioProvider.baseUrl}api/cart";
-    var dioCall = dioClient
-        .get(endpoint);
+    var dioCall = dioClient.get(endpoint);
 
     return callApiWithErrorParser(dioCall)
         .then((response) => _parseCartResponse(response));
@@ -53,12 +53,16 @@ class CheckOutRemoteDataSourceImpl extends BaseRemoteSource
   }
 
   @override
-  Future<OrderResponse?> placeOrder(OrderPayLoad orderPayload) {
+  Future<OrderSuccessResponse?> placeOrder(OrderPayload orderPayload) {
     var endpoint = "${DioProvider.baseUrl}api/customer/order";
-    var dioCall = dioClient
-        .get(endpoint);
+    var dioCall = dioClient.get(endpoint);
     callApiWithErrorParser(dioCall);
 
-    return Future(() => null);
+    return callApiWithErrorParser(dioCall)
+        .then((response) => _parseOrderResponse(response));
+  }
+
+  OrderSuccessResponse _parseOrderResponse(Response<dynamic> response) {
+    return OrderSuccessResponse.fromJson(response.data);
   }
 }

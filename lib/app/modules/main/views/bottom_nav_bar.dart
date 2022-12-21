@@ -3,11 +3,11 @@ import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 
+import '/app/core/values/app_colors.dart';
+import '/app/core/values/app_values.dart';
 import '../controllers/bottom_nav_controller.dart';
 import '../model/menu_code.dart';
 import '../model/menu_item.dart';
-import '/app/core/values/app_colors.dart';
-import '/app/core/values/app_values.dart';
 
 // ignore: must_be_immutable
 class BottomNavBar extends StatelessWidget {
@@ -55,7 +55,7 @@ class BottomNavBar extends StatelessWidget {
         unselectedItemColor: unselectedItemColor,
         currentIndex: navController.selectedIndex,
         onTap: (index) {
-          navController.updateSelectedIndex(index);
+          BottomNavController.updateSelectedIndex(index);
           onNewMenuSelected(navItems[index].menuCode);
         },
       ),

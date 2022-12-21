@@ -1,14 +1,13 @@
-import 'package:bs_commerce/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 import '../../../core/utils/utils.dart';
 import '../../../core/values/app_colors.dart';
 import '../../../core/values/app_values.dart';
-import '../../auth/model/cart_component_model.dart';
 
 class BottomPaymentView extends StatelessWidget {
-  const BottomPaymentView({Key? key, required this.callBackFunction})
+  final String buttonText;
+  const BottomPaymentView(
+      {Key? key, required this.callBackFunction, required this.buttonText})
       : super(key: key);
   final VoidCallback callBackFunction;
 
@@ -32,8 +31,7 @@ class BottomPaymentView extends StatelessWidget {
               child: Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Text(AppValues.continueToPayment,
-                      style: getTitleTextStyleWhite()),
+                  Text(buttonText, style: getTitleTextStyleWhite()),
                   Space(width: AppValues.margin_15),
                   const Icon(
                     Icons.arrow_circle_right_outlined,

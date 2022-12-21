@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 
-import '../../flavors/environment.dart';
 import '/app/network/pretty_dio_logger.dart';
 import '/app/network/request_headers.dart';
 import '/flavors/build_config.dart';
+import '../../flavors/environment.dart';
 
 class DioProvider {
   static final String baseUrl = BuildConfig.instance.config.baseUrl;
@@ -14,7 +14,7 @@ class DioProvider {
   static final _prettyDioLogger = PrettyDioLogger(
       requestHeader: true,
       requestBody: true,
-      responseBody: BuildConfig.instance.environment == Environment.DEVELOPMENT,
+      responseBody: BuildConfig.instance.environment != Environment.DEVELOPMENT,
       responseHeader: false,
       error: true,
       compact: true,

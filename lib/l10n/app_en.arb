@@ -1,6 +1,7 @@
 {
   "bottomNavHome": "Home",
   "homeAppBarTitle": "Home",
+  "paymentMethods": "Payment Method",
   "checkOutAppBarTitle": "Check Out",
   "homeCartBarTitle": "My Cart",
   "bottomNavCart": "Cart",

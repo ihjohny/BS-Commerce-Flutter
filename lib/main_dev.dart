@@ -8,7 +8,7 @@ import '/flavors/environment.dart';
 void main() {
   EnvConfig devConfig = EnvConfig(
     appName: "BS-Commerce Dev",
-    baseUrl: "https://bs-commerce-headless-demo.herokuapp.com/",
+    baseUrl: "https://bs-commerce.onrender.com/",
     shouldCollectCrashLog: true,
   );
 

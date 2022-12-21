@@ -1,33 +1,34 @@
+import 'package:bs_commerce/app/data/network/model/check_out/order_payload.dart';
 import 'package:bs_commerce/app/modules/product_details/model/cart_response.dart';
 import 'package:dio/dio.dart';
-import 'package:flutter/cupertino.dart';
-import '../../../../network/dio_provider.dart';
+
 import '/app/core/base/base_remote_source.dart';
+import '../../../../network/dio_provider.dart';
+import '../../model/check_out/order_response.dart';
 import 'cart_remote_data_source.dart';
 
 class CartRemoteDataSourceImpl extends BaseRemoteSource
     implements CartRemoteDataSource {
   @override
-  Future<CartResponse> addToCart(String productId, int quantity) async{
+  Future<CartResponse> addToCart(String productId, int quantity) async {
     var endpoint = "${DioProvider.baseUrl}api/cart";
     var dioCall = dioClient
         .post(endpoint, data: {"productId": productId, "quantity": quantity});
 
     return callApiWithErrorParser(dioCall)
-        .then((response)=>_parseCartResponse(response));
+        .then((response) => _parseCartResponse(response));
   }
 
   @override
   Future<CartResponse> getCart() {
     var endpoint = "${DioProvider.baseUrl}api/cart";
-    var dioCall = dioClient
-        .get(endpoint);
+    var dioCall = dioClient.get(endpoint);
 
     return callApiWithErrorParser(dioCall)
-        .then((response)=>_parseCartResponse(response));
+        .then((response) => _parseCartResponse(response));
   }
-  CartResponse _parseCartResponse(
-      Response<dynamic> response) {
+
+  CartResponse _parseCartResponse(Response<dynamic> response) {
     return CartResponse.fromJson(response.data);
   }
 
@@ -38,7 +39,7 @@ class CartRemoteDataSourceImpl extends BaseRemoteSource
         .delete(endpoint, queryParameters: {"productId": productId.toString()});
 
     return callApiWithErrorParser(dioCall)
-        .then((response)=>_parseCartResponse(response));
+        .then((response) => _parseCartResponse(response));
   }
 
   @override
@@ -48,6 +49,15 @@ class CartRemoteDataSourceImpl extends BaseRemoteSource
         .patch(endpoint, data: {"productId": productId, "quantity": quantity});
 
     return callApiWithErrorParser(dioCall)
-        .then((response)=>_parseCartResponse(response));
+        .then((response) => _parseCartResponse(response));
+  }
+
+  @override
+  Future<OrderSuccessResponse> placeOrder(OrderPayload orderPayload) {
+    var endpoint = "${DioProvider.baseUrl}api/customer/order";
+    var dioCall = dioClient.get(endpoint);
+
+    return callApiWithErrorParser(dioCall)
+        .then((response) => OrderSuccessResponse.fromJson(response.data));
   }
 }

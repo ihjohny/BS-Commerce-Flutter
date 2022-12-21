@@ -1,7 +1,7 @@
 import 'package:bs_commerce/app/core/utils/utils.dart';
 import 'package:bs_commerce/app/core/values/app_colors.dart';
+import 'package:bs_commerce/app/data/network/model/check_out/check_out_address.dart';
 import 'package:bs_commerce/app/modules/checkout/controllers/checkout_controller.dart';
-import 'package:bs_commerce/app/modules/checkout/model/address.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -17,15 +17,15 @@ class AddressForm extends BaseView<CheckOutController> {
   final TextEditingController postalCodeController = TextEditingController();
   final TextEditingController mobileNumberController = TextEditingController();
 
-  final Address? address;
+  final CheckOutAddress? address;
 
   AddressForm({this.address}) {
     if (address != null) {
-      nameController.text = address!.Name;
-      cityController.text = address!.city;
-      postalCodeController.text = address!.postalCode;
-      mobileNumberController.text = address!.mobileNumber;
-      addressController.text = address!.address;
+      nameController.text = address?.firstName ?? "";
+      cityController.text = address?.city ?? "";
+      postalCodeController.text = address?.postCode ?? "";
+      mobileNumberController.text = address?.phoneNumber ?? "";
+      addressController.text = address?.addressLine1 ?? "";
     }
   }
 
@@ -64,13 +64,16 @@ class AddressForm extends BaseView<CheckOutController> {
                 getForm(),
                 TextButton(
                     onPressed: () {
-                      controller.setAddress(Address(
-                          nameController.text,
-                          mobileNumberController.text,
-                          "",
-                          addressController.text,
-                          cityController.text,
-                          postalCodeController.text));
+                      controller.setAddress(CheckOutAddress(
+                          firstName: nameController.text,
+                          phoneNumber: mobileNumberController.text,
+                          postCode: postalCodeController.text,
+                          email: "",
+                          country: "Bangladesh",
+                          city: cityController.text,
+                          addressLine2: addressController.text,
+                          lastName: "",
+                          addressLine1: addressController.text));
                       Get.back();
                     },
                     style: getButtonStyle(true, true),

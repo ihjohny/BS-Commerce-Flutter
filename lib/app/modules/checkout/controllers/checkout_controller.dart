@@ -1,44 +1,37 @@
+import 'package:bs_commerce/app/data/network/model/check_out/check_out_address.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-import '../../../data/network/model/check_out/order_payload.dart';
-import '../../../data/network/repository/cart/cart_repository.dart';
-import '../../../data/network/repository/check_out/checkout_repository.dart';
-import '../model/address.dart';
 import '/app/core/base/base_controller.dart';
 import '/app/modules/CheckOut/model/ui_data.dart';
+import '../../../data/network/repository/cart/cart_repository.dart';
 
 class CheckOutController extends BaseController {
-  final CheckOutRepository _repository =
-      Get.find<CheckOutRepository>(tag: (CheckOutRepository).toString());
+  final CartRepository _repository = Get.find(tag: (CartRepository).toString());
 
-  final CartRepository cartRepository =
-      Get.find(tag: (CartRepository).toString());
+  int totalPrice = 0;
+  int totalQuantity = 0;
 
   final Rx<UiData?> _data = Rx(null);
   final RxBool isExpanded = RxBool(true);
-  Rx<Address?>? address;
+  Rx<CheckOutAddress?>? address;
 
   @override
   void onInit() {
-    debugPrint("MY Repo" + _repository.hashCode.toString());
     address = _repository.address;
+    totalPrice = _repository.totalPrice.value;
+    totalQuantity = _repository.totalQuantity.value;
     super.onInit();
   }
 
   UiData? get data => _data.value;
 
   getCart() {
-    callDataService(cartRepository.getCart());
+    callDataService(_repository.getCart());
   }
 
-  setAddress(Address address) {
+  setAddress(CheckOutAddress address) {
     debugPrint(_repository.setShippingAddress(address).toString());
   }
-
-  placeOrder() {
-    callDataService(_repository.placeOrder(OrderPayLoad()));
-  } // _handleDataResponse(ProductCheckOutResponse data) {
-//   _data(UiData(data));
-// }
 }
