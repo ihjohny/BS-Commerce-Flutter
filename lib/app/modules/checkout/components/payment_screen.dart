@@ -1,4 +1,3 @@
-import 'package:bs_commerce/app/data/network/model/check_out/products.dart';
 import 'package:bs_commerce/app/modules/checkout/components/payment_card.dart';
 import 'package:bs_commerce/app/modules/checkout/controllers/payment_controller.dart';
 import 'package:flutter/material.dart';
@@ -65,22 +64,11 @@ class PaymentScreen extends BaseView<PaymentController> {
       buttonText: "Place Order",
       callBackFunction: () {
         controller.placeOrder(
-            10,
-            controller.address!.value!,
-            controller.address!.value!,
-            controller.listOfPaymentOptions
-                .where((p0) => p0.isSelected == true)
-                .first
-                .paymentName,
-            controller.cartComponentCardList
-                .map((e) => Products(
-                    totalPrice: controller.totalPrice,
-                    quantity: int.tryParse(e?.productCount ?? "0"),
-                    price: int.tryParse(e?.productPrice ?? "0"),
-                    name: e?.productName,
-                    productId: e?.productId,
-                    sku: e?.productImageUrl))
-                .toList());
+          controller.listOfPaymentOptions
+              .where((p0) => p0.isSelected == true)
+              .first
+              .paymentName,
+        );
       },
     );
   }

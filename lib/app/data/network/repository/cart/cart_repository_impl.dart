@@ -1,5 +1,6 @@
 import 'package:bs_commerce/app/data/network/model/check_out/check_out_address.dart';
 import 'package:bs_commerce/app/data/network/model/check_out/order_payload.dart';
+import 'package:bs_commerce/app/data/network/model/check_out/products.dart';
 import 'package:bs_commerce/app/modules/checkout/model/payment.dart';
 import 'package:bs_commerce/app/modules/product_details/model/cart_response.dart';
 import 'package:get/get.dart';
@@ -101,9 +102,15 @@ class CartRepositoryImpl implements CartRepository {
 
   @override
   clearCart() {
-    cartComponentCardList.clear();
-    totalPrice(0);
-    totalQuantity(0);
+    _remoteSource.clearCart().then((value) {
+      if (value == true) {
+        cartComponentCardList.clear();
+        totalPrice(0);
+        totalQuantity(0);
+      } else {
+        Get.snackbar("Error", "sorry");
+      }
+    });
   }
 
   @override
@@ -134,7 +141,27 @@ class CartRepositoryImpl implements CartRepository {
   }
 
   @override
-  Future<OrderSuccessResponse?> placeOrder(OrderPayload orderPayload) {
+  Future<OrderSuccessResponse?> placeOrder(String paymentMethod) {
+    OrderPayload orderPayload = OrderPayload(
+      billingAddress: address.value,
+      paymentMethod: paymentMethod,
+      paypalPaymentId: "",
+      paypalRedirectUrl: "",
+      productCost: 10,
+      shippingCost: 1,
+      products: cartComponentCardList.value
+          .map((e) => Products(
+                sku: "",
+                productId: e?.productId,
+                name: e?.productName,
+                price: int.tryParse(e?.productPrice ?? "0"),
+                quantity: int.tryParse(e?.productCount ?? "0"),
+                totalPrice: totalPrice.value,
+              ))
+          .toList(),
+      shippingAddress: address.value,
+    );
+
     return _remoteSource.placeOrder(orderPayload);
   }
 }

@@ -4,8 +4,6 @@ import 'package:bs_commerce/app/modules/checkout/components/check_out_succes.dar
 import 'package:get/get.dart';
 
 import '../../../data/network/model/check_out/check_out_address.dart';
-import '../../../data/network/model/check_out/order_payload.dart';
-import '../../../data/network/model/check_out/products.dart';
 import '../../../data/network/repository/cart/cart_repository.dart';
 import '../../auth/model/cart_component_model.dart';
 import '../model/payment.dart';
@@ -27,23 +25,9 @@ class PaymentController extends BaseController {
     super.onInit();
   }
 
-  placeOrder(
-      int shippingCost,
-      CheckOutAddress billingAddress,
-      CheckOutAddress shippingAddress,
-      String paymentMethod,
-      List<Products>? products) {
-    callDataService(
-        _repository.placeOrder(OrderPayload(
-          billingAddress: billingAddress,
-          paymentMethod: paymentMethod,
-          paypalPaymentId: "",
-          paypalRedirectUrl: "",
-          productCost: 10,
-          shippingCost: shippingCost,
-          products: products,
-          shippingAddress: shippingAddress,
-        )), onSuccess: (OrderSuccessResponse? value) {
+  placeOrder(String paymentMethod) {
+    callDataService(_repository.placeOrder(paymentMethod),
+        onSuccess: (OrderSuccessResponse? value) {
       if (value != null) {
         _repository.clearCart();
         Get.dialog(CheckOutSuccess());

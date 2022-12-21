@@ -9,4 +9,5 @@ abstract class CartRemoteDataSource {
   Future<CartResponse> updateProduct(String productId, int quantity);
   Future<CartResponse> deleteProduct(String productId);
   Future<OrderSuccessResponse> placeOrder(OrderPayload orderPayload);
+  Future<bool> clearCart();
 }

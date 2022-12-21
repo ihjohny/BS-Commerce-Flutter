@@ -1,5 +1,4 @@
 import 'package:bs_commerce/app/core/utils/utils.dart';
-import 'package:bs_commerce/app/modules/main/controllers/bottom_nav_controller.dart';
 import 'package:bs_commerce/app/routes/app_pages.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -32,7 +31,7 @@ class CheckOutSuccess extends StatelessWidget {
             TextButton(
               onPressed: () {
                 Get.offNamed(Routes.MAIN);
-                BottomNavController.updateSelectedIndex(0);
+                Get.appUpdate();
               },
               child: const Padding(
                 padding: EdgeInsets.symmetric(horizontal: 50.0, vertical: 2),

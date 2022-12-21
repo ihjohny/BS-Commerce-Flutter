@@ -60,4 +60,13 @@ class CartRemoteDataSourceImpl extends BaseRemoteSource
     return callApiWithErrorParser(dioCall)
         .then((response) => OrderSuccessResponse.fromJson(response.data));
   }
+
+  @override
+  Future<bool> clearCart() {
+    var endpoint = "${DioProvider.baseUrl}api/cart/allitems";
+    var dioCall = dioClient.delete(endpoint);
+
+    return callApiWithErrorParser(dioCall)
+        .then((response) => response.statusCode == 200);
+  }
 }

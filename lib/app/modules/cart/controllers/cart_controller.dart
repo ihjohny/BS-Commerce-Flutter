@@ -16,11 +16,11 @@ class CartController extends BaseController {
   final Rx<UiData?> _data = Rx(null);
 
   UiData? get data => _data.value;
-  checkToken(){
-    _preferenceManager.getString(AppValues.AUTH_TOKEN).then((value){
-      if(value.isNotEmpty){
+  checkToken() {
+    _preferenceManager.getString(AppValues.AUTH_TOKEN).then((value) {
+      if (value.isNotEmpty) {
         callDataService(_cartRepository.getCart());
-      }else{
+      } else {
         Get.toNamed(Routes.SIGN_IN);
       }
     });
@@ -29,15 +29,19 @@ class CartController extends BaseController {
   getCart() {
     callDataService(_cartRepository.getCart(), onSuccess: _handleDataResponse);
   }
+
   updateCart(String productId, int quantity) {
-    if(quantity <= 0){
+    if (quantity <= 0) {
       deleteProduct(productId);
-    }else{
-      callDataService(_cartRepository.updateProduct(productId, quantity), onSuccess: _handleDataResponse);
+    } else {
+      callDataService(_cartRepository.updateProduct(productId, quantity),
+          onSuccess: _handleDataResponse);
     }
   }
-  deleteProduct(String productId){
-    callDataService(_cartRepository.deleteProduct(productId), onSuccess: _handleDataResponse);
+
+  deleteProduct(String productId) {
+    callDataService(_cartRepository.deleteProduct(productId),
+        onSuccess: _handleDataResponse);
   }
 
   _handleDataResponse(CartResponse data) {
@@ -50,5 +54,9 @@ class CartController extends BaseController {
   addToCart(String productId, double quantity) {
     callDataService(_cartRepository.addToCart(productId, quantity.toInt()),
         onSuccess: _handleDataResponse);
+  }
+
+  clearCart() {
+    _cartRepository.clearCart();
   }
 }
